@@ -1,0 +1,8 @@
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\bin\Release\HTML Writer.dll
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\bin\Release\HTML Writer.pdb
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\bin\Release\HTML Writer.xml
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML_Writer.Resources.resources
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML Writer.vbproj.GenerateResource.Cache
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML Writer.dll
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML Writer.xml
+\\server\usershares\traismcallister\documents\visual studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML Writer.pdb

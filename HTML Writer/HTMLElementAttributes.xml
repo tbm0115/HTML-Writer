@@ -1,0 +1,1593 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Attributes>
+  <Attribute>
+    <Name>abbr</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element> TH</Element>
+    </Relatives>
+    <Description>abbreviation for header cell</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>accept-charset</Name>
+    <Relatives>
+      <Element>FORM</Element>
+    </Relatives>
+    <Description>list of supported charsets</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>accept</Name>
+    <Relatives>
+      <Element>FORM</Element>
+      <Element> INPUT</Element>
+    </Relatives>
+    <Description>list of MIME types for file upload</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>accesskey</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>AREA</Element>
+      <Element>BUTTON</Element>
+      <Element>INPUT</Element>
+      <Element>LABEL</Element>
+      <Element>LEGEND</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description>accessibility key character</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>action</Name>
+    <Relatives>
+      <Element>FORM</Element>
+    </Relatives>
+    <Description>server-side form handler</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>align</Name>
+    <Relatives>
+      <Element>CAPTION</Element>
+    </Relatives>
+    <Description>relative to table</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>align</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+      <Element>IFRAME</Element>
+      <Element>IMG</Element>
+      <Element>INPUT</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>vertical or horizontal alignment</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>align</Name>
+    <Relatives>
+      <Element>LEGEND</Element>
+    </Relatives>
+    <Description>relative to fieldset</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>align</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>table position relative to window</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>align</Name>
+    <Relatives>
+      <Element>HR</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>align</Name>
+    <Relatives>
+      <Element>DIV</Element>
+      <Element>H1</Element>
+      <Element>H2</Element>
+      <Element>H3</Element>
+      <Element>H4</Element>
+      <Element>H5</Element>
+      <Element>H6</Element>
+      <Element>P</Element>
+    </Relatives>
+    <Description>align, text alignment</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>align</Name>
+    <Relatives>
+      <Element>COL</Element>
+      <Element>COLGROUP</Element>
+      <Element>TBODY</Element>
+      <Element>TD</Element>
+      <Element>TFOOT</Element>
+      <Element>TH</Element>
+      <Element>THEAD</Element>
+      <Element>TR</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>alink</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>color of selected links</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>alt</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>short description</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>alt</Name>
+    <Relatives>
+      <Element>AREA</Element>
+      <Element>IMG</Element>
+    </Relatives>
+    <Description>short description</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>alt</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>short description</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>archive</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>comma-separated archive list</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>archive</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>space-separated list of URIs</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>axis</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>comma-separated list of related headers</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>background</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>texture tile for document background</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>bgcolor</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>background color for cells</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>bgcolor</Name>
+    <Relatives>
+      <Element>TR</Element>
+    </Relatives>
+    <Description>background color for row</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>bgcolor</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>cell background color</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>bgcolor</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>document background color</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>border</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>controls frame width around table</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>border</Name>
+    <Relatives>
+      <Element>IMG</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>link border width</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>cellpadding</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>spacing within cells</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>cellspacing</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>spacing between cells</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>char</Name>
+    <Relatives>
+      <Element>COL</Element>
+      <Element>COLGROUP</Element>
+      <Element>TBODY</Element>
+      <Element>TD</Element>
+      <Element>TFOOT</Element>
+      <Element>TH</Element>
+      <Element>THEAD</Element>
+      <Element>TR</Element>
+    </Relatives>
+    <Description>alignment char, e.g. char=':'</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>charoff</Name>
+    <Relatives>
+      <Element>COL</Element>
+      <Element>COLGROUP</Element>
+      <Element>TBODY</Element>
+      <Element>TD</Element>
+      <Element>TFOOT</Element>
+      <Element>TH</Element>
+      <Element>THEAD</Element>
+      <Element>TR</Element>
+    </Relatives>
+    <Description>offset for alignment char</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>charset</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>LINK</Element>
+      <Element>SCRIPT</Element>
+    </Relatives>
+    <Description>char encoding of linked resource</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>checked</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>for radio buttons and check boxes</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>cite</Name>
+    <Relatives>
+      <Element>BLOCKQUOTE</Element>
+      <Element>Q</Element>
+    </Relatives>
+    <Description>URI for source document or msg</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>cite</Name>
+    <Relatives>
+      <Element>DEL</Element>
+      <Element>INS</Element>
+    </Relatives>
+    <Description>info on reason for change</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>class</Name>
+    <Description>space-separated list of classes</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>classid</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>identifies an implementation</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>clear</Name>
+    <Relatives>
+      <Element>BR</Element>
+    </Relatives>
+    <Description>control of text flow</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>code</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>applet class file</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>codebase</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>base URI for classid, data, archive</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>codebase</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>optional base URI for applet</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>codetype</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>content type for code</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>color</Name>
+    <Relatives>
+      <Element>BASEFONT</Element>
+      <Element>FONT</Element>
+    </Relatives>
+    <Description>text color</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>cols</Name>
+    <Relatives>
+      <Element>FRAMESET</Element>
+    </Relatives>
+    <Description>list of lengths, default: 100% (1 col)</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>cols</Name>
+    <Relatives>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>colspan</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>number of cols spanned by cell</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>compact</Name>
+    <Relatives>
+      <Element>DIR</Element>
+      <Element>DL</Element>
+      <Element>MENU</Element>
+      <Element>OL</Element>
+      <Element>UL</Element>
+    </Relatives>
+    <Description>reduced interitem spacing</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>content</Name>
+    <Relatives>
+      <Element>META</Element>
+    </Relatives>
+    <Description>associated information</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>coords</Name>
+    <Relatives>
+      <Element>AREA</Element>
+    </Relatives>
+    <Description>comma-separated list of lengths</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>coords</Name>
+    <Relatives>
+      <Element>A</Element>
+    </Relatives>
+    <Description>for use with client-side image maps</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>data</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>reference to object's data</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>datetime</Name>
+    <Relatives>
+      <Element>DEL</Element>
+      <Element>INS</Element>
+    </Relatives>
+    <Description>date and time of change</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>declare</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>declare but don't instantiate flag</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>defer</Name>
+    <Relatives>
+      <Element>SCRIPT</Element>
+    </Relatives>
+    <Description>UA may defer execution of script</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>dir</Name>
+    <Description>direction for weak/neutral text</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>dir</Name>
+    <Relatives>
+      <Element>BDO</Element>
+    </Relatives>
+    <Description>directionality</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>disabled</Name>
+    <Relatives>
+      <Element>BUTTON</Element>
+      <Element>INPUT</Element>
+      <Element>OPTGROUP</Element>
+      <Element>OPTION</Element>
+      <Element>SELECT</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description>unavailable in this context</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>enctype</Name>
+    <Relatives>
+      <Element>FORM</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>face</Name>
+    <Relatives>
+      <Element>BASEFONT</Element>
+      <Element>FONT</Element>
+    </Relatives>
+    <Description>comma-separated list of font names</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>for</Name>
+    <Relatives>
+      <Element>LABEL</Element>
+    </Relatives>
+    <Description>matches field ID value</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>frame</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>which parts of frame to render</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>frameborder</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>request frame borders?</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>headers</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>list of id's for header cells</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>height</Name>
+    <Relatives>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>frame height</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>height</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>height for cell</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>height</Name>
+    <Relatives>
+      <Element>IMG</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>override height</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>height</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>initial height</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>href</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>AREA</Element>
+      <Element>LINK</Element>
+    </Relatives>
+    <Description>URI for linked resource</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>href</Name>
+    <Relatives>
+      <Element>BASE</Element>
+    </Relatives>
+    <Description>URI that acts as base URI</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>hreflang</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>LINK</Element>
+    </Relatives>
+    <Description>language code</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>hspace</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+      <Element>IMG</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>horizontal gutter</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>http-equiv</Name>
+    <Relatives>
+      <Element>META</Element>
+    </Relatives>
+    <Description>HTTP response header name</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>id</Name>
+    <Description>document-wide unique id</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>ismap</Name>
+    <Relatives>
+      <Element>IMG</Element>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>use server-side image map</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>label</Name>
+    <Relatives>
+      <Element>OPTION</Element>
+    </Relatives>
+    <Description>for use in hierarchical menus</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>label</Name>
+    <Relatives>
+      <Element>OPTGROUP</Element>
+    </Relatives>
+    <Description>for use in hierarchical menus</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>lang</Name>
+    <Description>language code</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>language</Name>
+    <Relatives>
+      <Element>SCRIPT</Element>
+    </Relatives>
+    <Description>predefined script language name</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>link</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>color of links</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>longdesc</Name>
+    <Relatives>
+      <Element>IMG</Element>
+    </Relatives>
+    <Description>
+      link to long description (complements
+      alt)
+    </Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>longdesc</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>
+      link to long description (complements
+      title)
+    </Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>marginheight</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>margin height in pixels</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>marginwidth</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>margin widths in pixels</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>maxlength</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>max chars for text fields</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>media</Name>
+    <Relatives>
+      <Element>STYLE</Element>
+    </Relatives>
+    <Description>designed for use with these media</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>media</Name>
+    <Relatives>
+      <Element>LINK</Element>
+    </Relatives>
+    <Description>for rendering on these media</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>method</Name>
+    <Relatives>
+      <Element>FORM</Element>
+    </Relatives>
+    <Description>HTTP method used to submit the form</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>multiple</Name>
+    <Relatives>
+      <Element>SELECT</Element>
+    </Relatives>
+    <Description>default is single selection</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>BUTTON</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>allows applets to find each other</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>SELECT</Element>
+    </Relatives>
+    <Description>field name</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>FORM</Element>
+    </Relatives>
+    <Description>name of form for scripting</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>name of frame for targetting</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>IMG</Element>
+    </Relatives>
+    <Description>name of image for scripting</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>A</Element>
+    </Relatives>
+    <Description>named link end</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>submit as part of form</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>MAP</Element>
+    </Relatives>
+    <Description>for reference by usemap</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>PARAM</Element>
+    </Relatives>
+    <Description>property name</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>name</Name>
+    <Relatives>
+      <Element>META</Element>
+    </Relatives>
+    <Description>metainformation name</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>nohref</Name>
+    <Relatives>
+      <Element>AREA</Element>
+    </Relatives>
+    <Description>this region has no action</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>noresize</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+    </Relatives>
+    <Description>allow users to resize frames?</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>noshade</Name>
+    <Relatives>
+      <Element>HR</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>nowrap</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>suppress word wrap</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>object</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>serialized applet file</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onblur</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>AREA</Element>
+      <Element>BUTTON</Element>
+      <Element>INPUT</Element>
+      <Element>LABEL</Element>
+      <Element>SELECT</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description>the element lost the focus</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onchange</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+      <Element>SELECT</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description>the element value was changed</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onclick</Name>
+    <Description>a pointer button was clicked</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>ondblclick</Name>
+    <Description>a pointer button was double clicked</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onfocus</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>AREA</Element>
+      <Element>BUTTON</Element>
+      <Element>INPUT</Element>
+      <Element>LABEL</Element>
+      <Element>SELECT</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description>the element got the focus</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onkeydown</Name>
+    <Description>a key was pressed down</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onkeypress</Name>
+    <Description>a key was pressed and released</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onkeyup</Name>
+    <Description>a key was released</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onload</Name>
+    <Relatives>
+      <Element>FRAMESET</Element>
+    </Relatives>
+    <Description>all the frames have been loaded</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onload</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>the document has been loaded</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onmousedown</Name>
+    <Description>a pointer button was pressed down</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onmousemove</Name>
+    <Description>a pointer was moved within</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onmouseout</Name>
+    <Description>a pointer was moved away</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onmouseover</Name>
+    <Description>a pointer was moved onto</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onmouseup</Name>
+    <Description>a pointer button was released</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onreset</Name>
+    <Relatives>
+      <Element>FORM</Element>
+    </Relatives>
+    <Description>the form was reset</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onselect</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description>some text was selected</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onsubmit</Name>
+    <Relatives>
+      <Element>FORM</Element>
+    </Relatives>
+    <Description>the form was submitted</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onunload</Name>
+    <Relatives>
+      <Element>FRAMESET</Element>
+    </Relatives>
+    <Description>all the frames have been removed</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>onunload</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>the document has been removed</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>profile</Name>
+    <Relatives>
+      <Element>HEAD</Element>
+    </Relatives>
+    <Description>named dictionary of meta info</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>prompt</Name>
+    <Relatives>
+      <Element>ISINDEX</Element>
+    </Relatives>
+    <Description>prompt message</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>readonly</Name>
+    <Relatives>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>readonly</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>for text and passwd</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>rel</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>LINK</Element>
+    </Relatives>
+    <Description>forward link types</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>rev</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>LINK</Element>
+    </Relatives>
+    <Description>reverse link types</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>rows</Name>
+    <Relatives>
+      <Element>FRAMESET</Element>
+    </Relatives>
+    <Description>list of lengths, default: 100% (1 row)</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>rows</Name>
+    <Relatives>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>rowspan</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>number of rows spanned by cell</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>rules</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>rulings between rows and cols</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>scheme</Name>
+    <Relatives>
+      <Element>META</Element>
+    </Relatives>
+    <Description>select form of content</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>scope</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>scope covered by header cells</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>scrolling</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>scrollbar or none</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>selected</Name>
+    <Relatives>
+      <Element>OPTION</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>shape</Name>
+    <Relatives>
+      <Element>AREA</Element>
+    </Relatives>
+    <Description>controls interpretation of coords</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>shape</Name>
+    <Relatives>
+      <Element>A</Element>
+    </Relatives>
+    <Description>for use with client-side image maps</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>size</Name>
+    <Relatives>
+      <Element>HR</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>size</Name>
+    <Relatives>
+      <Element>FONT</Element>
+    </Relatives>
+    <Description>[+|-]nn e.g. size="+1", size="4"</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>size</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>specific to each type of field</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>size</Name>
+    <Relatives>
+      <Element>BASEFONT</Element>
+    </Relatives>
+    <Description>base font size for FONT elements</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>size</Name>
+    <Relatives>
+      <Element>SELECT</Element>
+    </Relatives>
+    <Description>rows visible</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>span</Name>
+    <Relatives>
+      <Element>COL</Element>
+    </Relatives>
+    <Description>COL attributes affect N columns</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>span</Name>
+    <Relatives>
+      <Element>COLGROUP</Element>
+    </Relatives>
+    <Description>default number of columns in group</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>src</Name>
+    <Relatives>
+      <Element>SCRIPT</Element>
+    </Relatives>
+    <Description>URI for an external script</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>src</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>for fields with images</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>src</Name>
+    <Relatives>
+      <Element>FRAME</Element>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>source of frame content</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>src</Name>
+    <Relatives>
+      <Element>IMG</Element>
+    </Relatives>
+    <Description>URI of image to embed</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>standby</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>message to show while loading</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>start</Name>
+    <Relatives>
+      <Element>OL</Element>
+    </Relatives>
+    <Description>starting sequence number</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>style</Name>
+    <Description>associated style info</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>summary</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>purpose/structure for speech output</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>tabindex</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>AREA</Element>
+      <Element>BUTTON</Element>
+      <Element>INPUT</Element>
+      <Element>OBJECT</Element>
+      <Element>SELECT</Element>
+      <Element>TEXTAREA</Element>
+    </Relatives>
+    <Description>position in tabbing order</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>target</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>AREA</Element>
+      <Element>BASE</Element>
+      <Element>FORM</Element>
+      <Element>LINK</Element>
+    </Relatives>
+    <Description>render in this frame</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>text</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>document text color</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>title</Name>
+    <Description>advisory title</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>A</Element>
+      <Element>LINK</Element>
+    </Relatives>
+    <Description>advisory content type</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>content type for data</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>PARAM</Element>
+    </Relatives>
+    <Description>
+      content type for value when
+      valuetype=ref
+    </Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>SCRIPT</Element>
+    </Relatives>
+    <Description>content type of script language</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>STYLE</Element>
+    </Relatives>
+    <Description>content type of style language</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>what kind of widget is needed</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>LI</Element>
+    </Relatives>
+    <Description>list item style</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>OL</Element>
+    </Relatives>
+    <Description>numbering style</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>UL</Element>
+    </Relatives>
+    <Description>bullet style</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>type</Name>
+    <Relatives>
+      <Element>BUTTON</Element>
+    </Relatives>
+    <Description>for use as form button</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>usemap</Name>
+    <Relatives>
+      <Element>IMG</Element>
+      <Element>INPUT</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>use client-side image map</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>valign</Name>
+    <Relatives>
+      <Element>COL</Element>
+      <Element>COLGROUP</Element>
+      <Element>TBODY</Element>
+      <Element>TD</Element>
+      <Element>TFOOT</Element>
+      <Element>TH</Element>
+      <Element>THEAD</Element>
+      <Element>TR</Element>
+    </Relatives>
+    <Description>vertical alignment in cells</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>value</Name>
+    <Relatives>
+      <Element>INPUT</Element>
+    </Relatives>
+    <Description>
+      Specify for radio buttons and
+      checkboxes
+    </Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>value</Name>
+    <Relatives>
+      <Element>OPTION</Element>
+    </Relatives>
+    <Description>defaults to element content</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>value</Name>
+    <Relatives>
+      <Element>PARAM</Element>
+    </Relatives>
+    <Description>property value</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>value</Name>
+    <Relatives>
+      <Element>BUTTON</Element>
+    </Relatives>
+    <Description>sent to server when submitted</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>value</Name>
+    <Relatives>
+      <Element>LI</Element>
+    </Relatives>
+    <Description>reset sequence number</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>valuetype</Name>
+    <Relatives>
+      <Element>PARAM</Element>
+    </Relatives>
+    <Description>How to interpret value</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>version</Name>
+    <Relatives>
+      <Element>HTML</Element>
+    </Relatives>
+    <Description>Public Constant</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>vlink</Name>
+    <Relatives>
+      <Element>BODY</Element>
+    </Relatives>
+    <Description>color of visited links</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>vspace</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+      <Element>IMG</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>vertical gutter</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>HR</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>IFRAME</Element>
+    </Relatives>
+    <Description>frame width</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>IMG</Element>
+      <Element>OBJECT</Element>
+    </Relatives>
+    <Description>override width</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>TABLE</Element>
+    </Relatives>
+    <Description>table width</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>TD</Element>
+      <Element>TH</Element>
+    </Relatives>
+    <Description>width for cell</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>APPLET</Element>
+    </Relatives>
+    <Description>initial width</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>COL</Element>
+    </Relatives>
+    <Description>column width specification</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>COLGROUP</Element>
+    </Relatives>
+    <Description>default width for enclosed COLs</Description>
+  </Attribute>
+
+  <Attribute>
+    <Name>width</Name>
+    <Relatives>
+      <Element>PRE</Element>
+    </Relatives>
+    <Description></Description>
+  </Attribute>
+</Attributes>

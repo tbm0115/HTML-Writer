@@ -1,0 +1,8 @@
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\bin\Debug\HTML.dll
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\bin\Debug\HTML.pdb
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\bin\Debug\HTML.xml
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Debug\HTML.Resources.resources
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Debug\HTML.vbproj.GenerateResource.Cache
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Debug\HTML.dll
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Debug\HTML.xml
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Debug\HTML.pdb

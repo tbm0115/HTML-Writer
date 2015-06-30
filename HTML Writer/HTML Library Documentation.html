@@ -1,0 +1,410 @@
+<html>
+	<head>
+		<style>
+			.class
+			{
+				color: darkblue;
+			}
+			.module
+			{
+				color: pink;
+			}
+			.property
+			{
+				color: red;
+			}
+			.enum
+			{
+				color: lightblue;
+			}
+			.method
+			{
+				color: purple;
+			}
+			.argument
+			{
+				color: blue;
+			}
+			.function
+			{
+				color: gold;
+			}
+			.legend
+			{
+				top: 0;
+				right: 0;
+				position: fixed;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="legend">
+			<table>
+				<tr>
+					<th>Class</th>
+					<th>Module</th>
+					<th>Property</th>
+					<th>Enumerable</th>
+					<th>Method</th>
+					<th>Argument</th>
+					<th>Function</th>
+				</tr>
+				<tr>
+					<td style="background-color: darkblue;"></td>
+					<td style="background-color: pink;"></td>
+					<td style="background-color: red;"></td>
+					<td style="background-color: lightblue;"></td>
+					<td style="background-color: purple;"></td>
+					<td style="background-color: blue;"></td>
+					<td style="background-color: gold;"></td>
+				</tr>
+			</table>
+		</div>
+		<ul>
+			<li class="class">HTMLWriter
+				<ul>
+					<li class="property">HTMLMarkup as String</li>
+					<li class="enum">TargetType</li>
+					<li class="method">New</li>
+					<li class="method">AddToHTMLMarkup
+						<ul>
+							<li class="argument">RawHTML as String</li>
+							<li class="argument">Item as HTMLForm</li>
+							<li class="argument">Item as HTMLHeader</li>
+							<li class="argument">Item as HTMLTable</li>
+							<li class="argument">Item as HTMLImageMap</li>
+							<li class="argument">Item as HTMLList</li>
+						</ul>
+					</li>
+					<li class="class">HTMLForm
+						<ul>
+							<li class="property">Form as String</li>
+							<li class="method">New
+								<ul>
+									<li class="argument">Text as String</li>
+									<li class="argument">Attributes as AttributeList</li>
+								</ul>
+							</li>
+							<li class="method">CreateFormText
+								<ul>
+									<li class="argument">Label as String</li>
+									<li class="argument">Value as String</li>
+									<li class="argument">LabelAttributes as AttributeList</li>
+									<li class="argument">TextAttributes as AttributeList</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="class">HTMLHeader
+						<ul>
+							<li class="property">Header as String</li>
+							<li class="method">New
+								<ul>
+									<li class="argument">TEXT as String</li>
+									<li class="argument">Attributes as AttributeList</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="class">HTMLTable
+						<ul>
+							<li class="property">Table as String</li>
+							<li class="method">New
+								<ul>
+									<li class="argument">Attributes as AttributeList</li>
+								</ul>
+							</li>
+							<li class="method">AddTableRow
+								<ul>
+									<li class="argument">Row as String</li>
+									<li class="argument">Row as HTMLTableRow</li>
+									<li class="argument">Header as HTMLTableHeader</li>
+								</ul>
+							</li>
+							<li class="class">HTMLTableHeader
+								<ul>
+									<li class="property">TableHeader as String</li>
+									<li class="method">New
+										<ul>
+											<li class="argument">Attributes as AttributeList</li>
+										</ul>
+									</li>
+									<li class="method">AddTableHeaderColumn
+										<ul>
+											<li class="argument">InnerText as String</li>
+											<li class="argument">Attributes as AttributeList</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="class">HTMLTableRow
+								<ul>
+									<li class="property">TableRow</li>
+									<li class="method">New
+										<ul>
+											<li class="argument">Attributes as AttributeList</li>
+										</ul>
+									</li>
+									<li class="method">AddTableColumn
+										<ul>
+											<li class="argument">InnerText as String</li>
+											<li class="argument">Attributes as AttributeList</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="class">HTMLImageMap
+						<ul>
+							<li class="enum">ShapeType</li>
+							<li class="property">ImageMap as String</li>
+							<li class="property">Map as String</li>
+							<li class="property">ImageURL as String</li>
+							<li class="property">ImageWidth as Integer</li>
+							<li class="property">ImageHeigth as Integer</li>
+							<li class="method">AddMapArea
+								<ul>
+									<li class="argument">Area as HTMLMapArea</li>
+									<li class="argument">Area as String</li>
+									<li class="argument">MapName as String</li>
+								</ul>
+							</li>
+							<li class="method">CreateImageMap
+								<ul>
+									<li class="argument">Width as Integer</li>
+									<li class="argument">Height as Integer</li>
+									<li class="argument">ImageUrl as String</li>
+									<li class="argument">Map as String</li>
+								</ul>
+							</li>
+							<li class="class">HTMLMapArea
+								<ul>
+									<li class="property">MapArea as String</li>
+									<li class="property">HREF as String</li>
+									<li class="property">OnClickEventName as String</li>
+									<li class="property">Target as TargetType</li>
+									<li class="property">TargetFrame as String</li>
+									<li class="property">Shape as ShapeType</li>
+									<li class="property">Coordinates as String</li>
+									<li class="method">CreateMapArea
+										<ul>
+											<li class="argument">Shape as ShapeType</li>
+											<li class="argument">Coordinates as String</li>
+											<li class="argument">OnClickEvent as String</li>
+											<li class="argument">Target as TargetType</li>
+											<li class="argument">HREF as String</li>
+										</ul>
+									</li>
+									<li class="method">CreateRectangleCoordinates
+										<ul>
+											<li class="argument">X1 as String</li>
+											<li class="argument">Y1 as String</li>
+											<li class="argument">X2 as String</li>
+											<li class="argument">Y2 as String</li>
+											<li class="argument">X1 as Integer</li>
+											<li class="argument">Y1 as Integer</li>
+											<li class="argument">X2 as Integer</li>
+											<li class="argument">Y2 as Integer</li>
+											<li class="argument">X1 as Double</li>
+											<li class="argument">Y1 as Double</li>
+											<li class="argument">X2 as Double</li>
+											<li class="argument">Y2 as Double</li>
+											<li class="argument">X1 as Decimal</li>
+											<li class="argument">Y1 as Decimal</li>
+											<li class="argument">X2 as Decimal</li>
+											<li class="argument">Y2 as Decimal</li>
+											<li class="argument">P1 as Point</li>
+											<li class="argument">P2 as Point</li>
+											<li class="argument">R as Rectangle</li>
+										</ul>
+									</li>
+									<li class="method">CreateCircleCoordinates
+										<ul>
+											<li class="argument">X as String</li>
+											<li class="argument">Y as String</li>
+											<li class="argument">Radius as String</li>
+											<li class="argument">X as Integer</li>
+											<li class="argument">Y as Integer</li>
+											<li class="argument">Radius as Integer</li>
+											<li class="argument">X as Double</li>
+											<li class="argument">Y as Double</li>
+											<li class="argument">Radius as Double</li>
+											<li class="argument">X as Decimal</li>
+											<li class="argument">Y as Decimal</li>
+											<li class="argument">Radius as Decimal</li>
+											<li class="argument">Center as Point</li>
+											<li class="argument">Radius as Decimal</li>
+											<li class="argument">Center as Point</li>
+											<li class="argument">Radius as Double</li>
+											<li class="argument">Center as Point</li>
+											<li class="argument">Radius as Integer</li>
+											<li class="argument">Center as Point</li>
+											<li class="argument">Radius as String</li>
+										</ul>
+									</li>
+									<li class="method">AddPolyCoordinate
+										<ul>
+											<li class="argument">XCoordinate as Double</li>
+											<li class="argument">YCoordinate as Double</li>
+											<li class="argument">XCoordinate as String</li>
+											<li class="argument">YCoordinate as String</li>
+											<li class="argument">XCoordinate as Integer</li>
+											<li class="argument">YCoordinate as Integer</li>
+											<li class="argument">XCoordinate as Decimal</li>
+											<li class="argument">YCoordinate as Decimal</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="class">HTMLList
+						<ul>
+							<li class="property">CssClassName</li>
+							<li class="enum">ListType</li>
+							<li class="property">ThisListType</li>
+							<li class="property">List</li>
+							<li class="function">CountItems as Integer
+								<ul>
+									<li class="argument">ListString as String</li>
+									<li class="argument">ListType as ListType</li>
+								</ul>
+							</li>
+							<li class="method">AddItem
+								<ul>
+									<li class="argument">Value as String</li>
+									<li class="argument">CssClass as String</li>
+									<li class="argument">ListType as ListType</li>
+									<li class="argument">CssClass</li>
+								</ul>
+							</li>
+							<li class="method">AddList
+								<ul>
+									<li class="argument">ListString as String</li>
+									<li class="argument">ListType as ListType</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="class">AttributeList
+				<ul>
+					<li class="property">Attributes as String()</li>
+					<li class="property">AttributeCount as Integer</li>
+					<li class="method">New
+						<ul>
+							<li class="argument">AttributeNames as String()</li>
+							<li class="argument">AttributeValues as String()</li>
+							<li class="argument">IsAllStyle as Boolean</li>
+						</ul>
+					</li>
+					<li class="function">GetAttributeAt as String	
+						<ul>
+							<li class="argument">Index as Integer</li>
+							<li class="argument">AttributeName as String</li>
+						</ul>
+					</li>
+					<li class="method">AddAttribute
+						<ul>
+							<li class="argument">AttributeName as String</li>
+							<li class="argument">AttributeValue as String</li>
+							<li class="argument">IsStyle as Boolean</li>
+							<li class="argument">AttributeNames as String()</li>
+							<li class="argument">AttributeValues as String()</li>
+						</ul>
+					</li>
+					<li class="function">GetAttributeString as String</li>
+					<li class="method">RemoveAttributeAt
+						<ul>
+							<li class="argument">Index as Integer</li>
+							<li class="argument">AttributeName as String</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="module">SharedFunctions
+				<ul>
+					<li class="property">BadChars as String()</li>
+					<li class="property">GoodChars as String()</li>
+					<li class="property">HTMLTags as String()</li>
+					<li class="function">ReplaceBadChars
+						<ul>
+							<li class="argument">InputLine as String</li>
+						</ul>
+					</li>
+					<li class="function">IncludeAnchor
+						<ul>
+							<li class="argument">Attributes as AttributeList</li>
+							<li class="argument">InputText as String</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="class">HTMLParser
+				<ul>
+					<li class="class">pTable
+						<ul>
+							<li class="function">Convert_Table_DataTable as DataTable
+								<ul>
+									<li class="argument">Markup as String</li>
+								</ul>
+							</li>
+							<li class="function">Convert_Table_XML as XmlDocument
+								<ul>
+									<li class="argument">Markup as String</li>
+								</ul>
+							</li>
+							<li class="function">Get_TableRows as HTMLTableRow()
+								<ul>
+									<li class="argument">Markup as String</li>
+								</ul>
+							</li>
+							<li class="function">Get_RowColumns as String()
+								<ul>
+									<li class="argument">Row as HTMLTableRow</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="class">pList
+						<ul>
+							<li class="property">cntItem as Integer</li>
+							<li class="function">Convert_List_Xml
+								<ul>
+									<li class="argument">Markup as String</li>
+								</ul>
+							</li>
+							<li class="function">Recursive_ListGatherer as XmlElement
+								<ul>
+									<li class="argument">liNode as XmlElement</li>
+									<li class="argument">Markup as String</li>
+									<li class="argument">xDoc as XmlDocument</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li class="module">ParsingFuncs
+				<ul>
+					<li class="function">StripHTMLMarkup as String
+						<ul>
+							<li class="argument">Markup as String</li>
+						</ul>
+					</li>
+					<li class="function">HasMarkup as Boolean
+						<ul>
+							<li class="argument">Markup as String</li>
+						</ul>
+					</li>
+					<li class="function">PeakTag as String
+						<ul>
+							<li class="argument">Markup as String</li>
+						</ul>
+					</li>
+				</ul>
+		</ul>
+	</body>
+</html>

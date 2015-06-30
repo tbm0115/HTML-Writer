@@ -1,0 +1,3 @@
+﻿Module HTMLConstants
+
+End Module
