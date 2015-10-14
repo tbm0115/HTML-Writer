@@ -63,65 +63,30 @@ HTML
 	<param name="Markup">Raw HTML Markup to search</param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.#ctor">
+</member><member name="P:HTML.HTMLWriter.SafeMode">
+	<summary>
+ Get/Set the condition of whether the HTMLWriter class should find and replace any invalid characteristics. Note that most HTML tags should be safe.
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:HTML.HTMLWriter.#ctor(System.Boolean)">
 	<summary>
  Creates a new instance of an HTML Document
  </summary>
 	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(System.String)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="RawHTML">Adds raw HTML text. Can include raw HTML Markup.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(HTML.HTMLWriter.HTMLForm)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="Item">Adds the instance of an HTML Form to the current instance of an HTML Document.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(HTML.HTMLWriter.HTMLHeader)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="Item">Adds the instance of an HTML Header to the current instance of an HTML Document.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(HTML.HTMLWriter.HTMLTable)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="Item">Adds the instance of an HTML Table to the current instance of an HTML Document.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(HTML.HTMLWriter.HTMLImageMap)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="Item">Adds the instance of an HTML Image Map to the current instance of an HTML Document.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(HTML.HTMLWriter.HTMLList)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="Item">Adds the instance of an HTML List to the current instance of an HTML Document.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(HTML.HTMLWriter.HTMLImage)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="Item">Adds the instance of an HTML List to the current instance of an HTML Document.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.AddToHTMLMarkup(HTML.HTMLWriter.HTMLCanvas)">
-	<summary>
- Adds HTML Markup to the current instance of an HTML Document.
- </summary>
-	<param name="Item">Adds the instance of an HTML Canvas to the current instance of an HTML Document.</param>
-	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLForm.Form">
+</member><member name="P:HTML.HTMLWriter.HTMLForm.Markup">
 	<summary>
  Get/Set the HTML Markup for the current instance of an HTML Form.
  </summary>
 	<value></value>
 	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:HTML.HTMLWriter.HTMLForm.#ctor(System.String,HTML.AttributeList)">
+	<summary>
+ Creates a new instance of the HTML Form object.
+ </summary>
+	<param name="TEXT">The FieldSet Legend. Otherwise recognized as the label for the form.</param>
 	<remarks></remarks>
 </member><member name="M:HTML.HTMLWriter.HTMLForm.CreateFormText(System.String,System.String,HTML.AttributeList,HTML.AttributeList)">
 	<summary>
@@ -137,20 +102,17 @@ HTML
  Represents an instance of a series of TextBox controls bound within the FieldSet HTML Element.
  </summary>
 	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLHeader.#ctor(System.String,HTML.AttributeList)">
-	<summary>
- Creates a new instance of the HTML Header object. 
- This object serves as a Heading or Label in the layout of the HTML Document.
- </summary>
-	<param name="TEXT"></param>
-	<param name="Attributes"></param>
-	<remarks></remarks>
 </member><member name="T:HTML.HTMLWriter.HTMLHeader">
 	<summary>
  Represents an instance of an HTML Header element.
  </summary>
 	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLTable.Table">
+</member><member name="T:HTML.HTMLWriter.HTMLParagraph">
+	<summary>
+ Represent an instance of an HTML Paragraph element.
+ </summary>
+	<remarks></remarks>
+</member><member name="P:HTML.HTMLWriter.HTMLTable.Markup">
 	<summary>
  Get/Set the HTML markup for the current instance of an HTML Table directly.
  </summary>
@@ -162,49 +124,7 @@ HTML
  Creates a new instance of an HTML Table. A table consists of HTML Table Rows and their columns.
  </summary>
 	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLTable.AddTableRow(System.String)">
-	<summary>
- Add the raw HTML Markup consisting of an HTML Table Row.
- </summary>
-	<param name="Row">Raw HTML Markup. String.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLTable.AddTableRow(HTML.HTMLWriter.HTMLTable.HTMLTableHeader)">
-	<summary>
- Adds the HTML Markup of an HTML Table Header
- </summary>
-	<param name="TableHeader">HTML Table Header Object</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLTable.AddTableRow(HTML.HTMLWriter.HTMLTable.HTMLTableRow)">
-	<summary>
- Adds the HTML Markup of an HTML Table Row
- </summary>
-	<param name="TableRow">HTML Table Row Object.</param>
-	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLTable.HTMLTableHeader.TableHeader">
-	<summary>
- Get/Set the HTML markup for the current instance of an HTML Table Header directly.
- </summary>
-	<value></value>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLTable.HTMLTableHeader.#ctor(HTML.AttributeList)">
-	<summary>
- Creates a new instance of an HTML Table Header. A table header serves as a label for 
- the proceeding rows and should be added to the HTML Table first.
- </summary>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLTable.HTMLTableHeader.AddTableHeaderColumn(System.String,HTML.AttributeList)">
-	<summary>
- Adds a column to the current instance of an HTML Table Header.
- </summary>
-	<param name="InnerText">Inner text of the new table cell.</param>
-	<remarks></remarks>
-</member><member name="T:HTML.HTMLWriter.HTMLTable.HTMLTableHeader">
-	<summary>
- Represents the instance of an HTML Table Header. Serves as a column label.
- </summary>
-	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLTable.HTMLTableRow.TableRow">
+</member><member name="P:HTML.HTMLWriter.HTMLTable.HTMLTableRow.Markup">
 	<summary>
  Get/Set the HTML markup for the current instance of an HTML Table Row directly.
  </summary>
@@ -216,15 +136,14 @@ HTML
  Creates a new instance of an HTML Table Row. A table row helps provide substance to the content of the table.
  </summary>
 	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLTable.HTMLTableRow.AddTableColumn(System.String,HTML.AttributeList)">
-	<summary>
- Adds a column to the current instance of an HTML Table Row.
- </summary>
-	<param name="InnerText">Inner text of the new table cell.</param>
-	<remarks></remarks>
 </member><member name="T:HTML.HTMLWriter.HTMLTable.HTMLTableRow">
 	<summary>
  Represents the instance of an HTML Table Row.
+ </summary>
+	<remarks></remarks>
+</member><member name="T:HTML.HTMLWriter.HTMLTable.HTMLTableCell">
+	<summary>
+ Represents the instance of an HTML Table Cell
  </summary>
 	<remarks></remarks>
 </member><member name="T:HTML.HTMLWriter.HTMLTable">
@@ -237,7 +156,7 @@ HTML
  Represents the type of shape each map area takes shape to.
  </summary>
 	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLImageMap.ImageMap">
+</member><member name="P:HTML.HTMLWriter.HTMLImageMap.Markup">
 	<summary>
  Get the raw HTML markup that the current instance of an HTML Image Map represents.
  </summary>
@@ -272,28 +191,7 @@ HTML
 	<value></value>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLImageMap.AddMapArea(HTML.HTMLWriter.HTMLImageMap.HTMLMapArea,System.String)">
-	<summary>
- Adds a new instance of an HTML Map Area to the Map element of the current instance of an HTML Image Map.
- </summary>
-	<param name="Area">HTML Map Area object.</param>
-	<param name="MapName">Only applies to first addition of an HTML Map Area, this sets the name of the HTML Image Map.
- This name is used when applying coordinates to an HTML Image element.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLImageMap.AddMapArea(System.String,System.String)">
-	<summary>
- Adds a new instance of an HTML Map Area to the Map element of the current instance of an HTML Image Map.
- </summary>
-	<param name="Area">Raw HTML Markup for a Map Area.</param>
-	<param name="MapName">Only applies to the first addition of an HTML Map Area, this sets the name of the HTML Image Map.
- This name is used when applying coordinates to an HTML Image element.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLImageMap.CreateImageMap">
-	<summary>
- Creates a new instance of an HTML Image Map, so long as all properties have been set.
- </summary>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLImageMap.CreateImageMap(System.Int32,System.Int32,System.String,System.String)">
+</member><member name="M:HTML.HTMLWriter.HTMLImageMap.#ctor(System.Int32,System.Int32,System.String,System.String,HTML.AttributeList)">
 	<summary>
  Creates a new instance of an HTML Image Map.
  </summary>
@@ -359,14 +257,30 @@ HTML
  element.
  </summary>
 	<remarks></remarks>
+</member><member name="M:HTML.HTMLWriter.HTMLImageMap.AddMapArea(HTML.HTMLWriter.HTMLImageMap.HTMLMapArea,System.String)">
+	<summary>
+ Adds a new instance of an HTML Map Area to the Map element of the current instance of an HTML Image Map.
+ </summary>
+	<param name="Area">HTML Map Area object.</param>
+	<param name="MapName">Only applies to first addition of an HTML Map Area, this sets the name of the HTML Image Map.
+ This name is used when applying coordinates to an HTML Image element.</param>
+	<remarks></remarks>
+</member><member name="M:HTML.HTMLWriter.HTMLImageMap.AddMapArea(System.String,System.String)">
+	<summary>
+ Adds a new instance of an HTML Map Area to the Map element of the current instance of an HTML Image Map.
+ </summary>
+	<param name="Area">Raw HTML Markup for a Map Area.</param>
+	<param name="MapName">Only applies to the first addition of an HTML Map Area, this sets the name of the HTML Image Map.
+ This name is used when applying coordinates to an HTML Image element.</param>
+	<remarks></remarks>
 </member><member name="T:HTML.HTMLWriter.HTMLImageMap">
 	<summary>
  Represents an instance of an HTML Image with an HTML Image Map
  </summary>
 	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLList.CssClassName">
+</member><member name="P:HTML.HTMLWriter.HTMLList.Markup">
 	<summary>
- Get/Set the optional CSS Class name associated with the list(s)
+ Get the raw HTML markup for the current instance of an HTML List.
  </summary>
 	<value></value>
 	<returns></returns>
@@ -384,58 +298,6 @@ HTML
  </summary>
 	<value></value>
 	<returns></returns>
-	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLList.List">
-	<summary>
- Get the raw HTML markup for the current instance of an HTML List.
- </summary>
-	<value></value>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLList.CountItems(System.String)">
-	<summary>
- Get the total number of list items found (even child items) in the raw HTML markup provided. Searches by provided
-  List Type.
- </summary>
-	<param name="ListString">Raw HTML markup.</param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLList.CountItems(System.String,HTML.HTMLWriter.HTMLList.ListType)">
-	<summary>
- Get the total number of list items found (even child items) in the raw HTML markup provided. Searches by provided
-  List Type.
- </summary>
-	<param name="ListString">Raw HTML markup.</param>
-	<param name="ListType">Specified List Type.</param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLList.AddItem(System.String,System.String)">
-	<summary>
- Appends a new value to the current instance of an HTML List using the current List Type.
- </summary>
-	<param name="Value">Inner text</param>
-	<param name="CssClass">Optional CSS Class name for the specific List Item</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLList.AddItem(System.String,HTML.HTMLWriter.HTMLList.ListType,System.String)">
-	<summary>
- Appends a new value to the current instance of an HTML List.
- </summary>
-	<param name="Value">Inner text</param>
-	<param name="ListType">Specifies the List Item Type</param>
-	<param name="CssClass">Optional CSS Class name for the specific List Item</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLList.AddList(System.String)">
-	<summary>
- Appends a new List Item to the current instance of an HTML List.
- </summary>
-	<param name="ListString">Raw HTML markup.</param>
-	<remarks></remarks>
-</member><member name="M:HTML.HTMLWriter.HTMLList.AddList(System.String,HTML.HTMLWriter.HTMLList.ListType)">
-	<summary>
- Appends a new List Item to the current instance of an HTML List.
- </summary>
-	<param name="ListString">Raw HTML markup.</param>
-	<param name="ListType">Specifies the List Item Type</param>
 	<remarks></remarks>
 </member><member name="T:HTML.HTMLWriter.HTMLList">
 	<summary>
@@ -455,87 +317,63 @@ HTML
  Represents an instance of an HTML Image.
  </summary>
 	<remarks></remarks>
-</member><member name="P:HTML.AttributeList.Attributes">
+</member><member name="T:HTML.HTMLWriter.HTMLCanvas">
 	<summary>
- Returns the full list of attributes
+ Represents an instance of an HTML Canvas
+ </summary>
+	<remarks></remarks>
+</member><member name="P:HTML.HTMLWriter.HTMLAnchor.Markup">
+	<summary>
+ Get/Set the HTML markup for the current instance of an HTML Anchor directly.
  </summary>
 	<value></value>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="P:HTML.AttributeList.AttributeCount">
+</member><member name="T:HTML.HTMLWriter.HTMLAnchor">
 	<summary>
- Returns the number of HTML element attributes in the current instance of an AttributeList
- </summary>
-	<value></value>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.#ctor">
-	<summary>
- Initializes a new instance of an AttributeList
+ Represents an instance of an HTML Anchor
  </summary>
 	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.GetAttributeAt(System.Int32)">
+</member><member name="T:HTML.HTMLWriter.HTMLInput">
 	<summary>
- Returns the full HTML attribute string at the specified index of the current instance of an AttributeList
+ Represents an instance of an HTML Input
  </summary>
-	<param name="Index"></param>
-	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.GetAttributeAt(System.String)">
+</member><member name="T:HTML.HTMLWriter.HTMLLabel">
 	<summary>
- Returns the full HTML attribute string at the specified instance of an AttributeName. If the AttributeName does not exist
- in the current instance of an AttributeList, then the function returns nothing.
+ Represents an instance of an HTML Label
  </summary>
-	<param name="AttributeName"></param>
-	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.AddAttribute(System.String,System.String,System.Boolean)">
+</member><member name="T:HTML.HTMLWriter.HTMLSelect">
 	<summary>
- Adds a HTML element attribute (or CSS style attribute) to the current instance of an AttributeList
+ Represents an instance of an HTML Select
  </summary>
-	<param name="AttributeName">Name of the HTML element attribute. ie; OnClick, Width, CssClass, etc.</param>
-	<param name="AttributeValue">Value of the HTML element attribute. ie; someJavaFunction();, 100px, someCssClass.</param>
-	<param name="IsStyle">If enabled, instead adds the specified attribute name/value to the static Style attribute 
- for the current instance of an AttributeList</param>
 	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.AddAttribute(System.String[],System.String[])">
+</member><member name="T:HTML.HTMLWriter.HTMLProgress">
 	<summary>
- Adds a series of HTML element attributes to the current instance of an AttributeList
+ Represents an instance of an HTML Progress
  </summary>
-	<param name="AttributeNames"></param>
-	<param name="AttributeValues"></param>
 	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.GetAttributeString">
+</member><member name="T:HTML.HTMLWriter.HTMLMeter">
 	<summary>
- Get the properly formatted series of HTML attributes in the current instance of an AttributeList
+ Represents an instance of an HTML Meter
  </summary>
-	<returns>String</returns>
 	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.RemoveAttributeAt(System.Int32)">
+</member><member name="T:HTML.HTMLWriter.HTMLVideo">
 	<summary>
- Removes the HTML element attribute at the specified index
+ Represents an instance of an HTML Video
  </summary>
-	<param name="Index">Zero-based index to remove object from array.</param>
 	<remarks></remarks>
-</member><member name="M:HTML.AttributeList.RemoveAttributeAt(System.String)">
+</member><member name="T:HTML.HTMLWriter.HTMLAudio">
 	<summary>
- Removes the HTML element attribute at all instances of the specified Attribute Name
+ Represents an instance of an HTML Audio
  </summary>
-	<param name="AttributeName">Name of the HTML element attribute. ie; OnClick, Width, CssClass, etc.</param>
 	<remarks></remarks>
 </member><member name="M:HTML.SharedFunctions.ReplaceBadChars(System.String)">
 	<summary>
  Searches for reserved words for HTML and replaces the carrots with appropriate meta characters.
  </summary>
 	<param name="InputLine">Incoming inner text.</param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:HTML.SharedFunctions.IncludeAnchor(HTML.AttributeList,System.String)">
-	<summary>
- Returns a reformatted HTML element innertext with specified anchor (<a></a>) tags. Specify HREF and Id in AttributeList
- </summary>
-	<param name="Attributes">Used to specify values for HREF, ID, TARGET, etc.</param>
-	<param name="InputText">Original Inner Text</param>
 	<returns></returns>
 	<remarks></remarks>
 </member><member name="P:HTML.My.Resources.Resources.ResourceManager">
