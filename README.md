@@ -15,29 +15,41 @@ The library started within .NET 3.5 framework, but hardware requirements within 
 <ul>
   <li>"Form" (basically a fieldset with addition of text labels and textboxes)</li>
   <li>Header</li>
+  <li>Paragraph</li>
   <li>Table
     <ul>
-      <li>Table Header</li>
-      <li>Table Row</li>
+      <li>Table Header {DELETED}</li>
+      <li>Table Row
+        <ul>
+          <li>Table Cell</li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li>Image Map
     <ul>
-      <li>Area</li>
+      <li>Map Area</li>
     </ul>
   </li>
-  <li>List
+  <li>List (with Types)
     <ul>
-      <li>Ordered List</li>
-      <li>Unordered List</li>
+      <li>List Item</li>
     </ul>
   </li>
   <li>Image</li>
   <li>Canvas</li>
+  <li>Anchor</li>
+  <li>Input</li>
+  <li>Label</li>
+  <li>Select</li>
+  <li>Progress</li>
+  <li>Meter</li>
+  <li>Video</li>
+  <li>Audio</li>
 </ul>
 
 #Usage
-Import the HTML library to your project and <pre><code>Imports HTML, HTML.HTMLWriter</code></pre> to get started.
+Import the HTML library to your project and <pre><code>Imports HTML.HTMLWriter</code></pre> to get started.
 
 Start with an <pre><code>HTMLWriter</code></pre> object and work from there.
 
@@ -49,39 +61,40 @@ Imports HTML, HTMLWriter
 
 Public Class Form1
   Public Sub GenerateHTMLReport(ByVal FilePath As String)
-        Dim Report As New HTMLWriter
-        Dim Header As New HTMLHeader("Hello World")
-        'Begin writing report data to HTML Table
-        Dim Table As New HTMLTable
-        'Add Attribute Style to table header with the provided CSS
-        Dim TH As New HTMLTable.HTMLTableHeader(New AttributeList({"background-color"}, {"lightblue"}, True))
-        TH.AddTableHeaderColumn("Bubble #")
-        TH.AddTableHeaderColumn("Feature Name")
-        TH.AddTableHeaderColumn("Inspection Method")
-        TH.AddTableHeaderColumn("Measured Value")
-        TH.AddTableHeaderColumn("In Tolerance?")
-        Table.AddTableRow(TH)
-        Dim TR As HTMLTable.HTMLTableRow
-        
-        For i = 0 To 10 Step 1
-          'Offset Color
-          If i And 1 Then
-                'Add Attribute Style to table row with the provided CSS
-                TR = New HTMLTable.HTMLTableRow(New AttributeList({"background-color"}, {"lightgray"}, True))
-          Else
-                TR = New HTMLTable.HTMLTableRow
-          End If
-          For j = 0 To 5 Step 1
-            TR.AddTableColumn(j.ToString)
-          Next
-          Table.AddTableRow(TR)
-        Next
-        
-        'Add HTML objects to "Report"
-        Report.AddToHTMLMarkup(Header)
-        Report.AddToHTMLMarkup(Table)
-        'Write all HTML markup to specified file (passed in sub)
-        File.WriteAllText(FilePath, Report.HTMLMarkup)
-    End Sub
+    Dim Report As New HTMLWriter
+
+    'Begin writing report data to HTML Table
+    Dim Table As New HTMLTable
+    'Add Attribute Style to table header with the provided CSS
+    Dim TH As New HTMLTable.HTMLTableRow(New AttributeList({"background-color"}, {"lightblue"}, True))
+    TH.AddTableCell(New HTMLTableCell("Column 1", HTMLTableCell.CellType.Header))
+    TH.AddTableCell(New HTMLTableCell("Column 2", HTMLTableCell.CellType.Header))
+    TH.AddTableCell(New HTMLTableCell("Column 3", HTMLTableCell.CellType.Header))
+    TH.AddTableCell(New HTMLTableCell("Column 4", HTMLTableCell.CellType.Header))
+    TH.AddTableCell(New HTMLTableCell("Column 5", HTMLTableCell.CellType.Header))
+    Table.AddTableRow(TH)
+    Dim TR As HTMLTable.HTMLTableRow
+
+    For i = 0 To 10 Step 1
+      'Offset Color
+      If i And 1 Then
+        'Add Attribute Style to table row with the provided CSS
+        TR = New HTMLTable.HTMLTableRow(New AttributeList({"background-color"}, {"lightgray"}, True))
+      Else
+        TR = New HTMLTable.HTMLTableRow
+      End If
+      For j = 0 To 5 Step 1
+        TR += New HTMLTableCell(j.ToString, HTMLTableCell.CellType.Row)
+      Next
+      Debug.WriteLine(vbTab & "Added '" & TR.Count.ToString & "' cells to the row...")
+      Table += TR
+    Next
+    Debug.WriteLine("Added '" & Table.Count.ToString & "' rows to the table...")
+    'Add HTML objects to "Report"
+    Report += New HTMLHeader("Hello World")
+    Report += Table
+    'Write all HTML markup to specified file (passed in sub)
+    File.WriteAllText(FilePath, Report.HTMLMarkup)
+  End Sub
 End Class
 </code></pre>
