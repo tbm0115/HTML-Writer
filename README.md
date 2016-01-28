@@ -1,23 +1,4 @@
-<style>
-	.markup{
-		display: inline-block;
-		background-color: lightgrey;
-		border: 1px solid #999;
-		border-radius: 5px;
-		font-family: "Courier New", Courier, Monospace;
-		color: dimgrey;
-	}
-	pre{
-		display: block;
-		background-color: lightgrey;
-		border: 1px solid #999;
-		border-radius: 5px;
-		font-family: "Courier New", Courier, Monospace;
-		color: dimgrey;
-		padding: 3px;
-		overflow-x: auto;
-	}
-</style>
+
 # HTML-Writer
 A .NET 2.0 library for generating HTML markup.
 
