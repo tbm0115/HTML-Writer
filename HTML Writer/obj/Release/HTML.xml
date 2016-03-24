@@ -124,7 +124,7 @@ HTML
  Creates a new instance of an HTML Table. A table consists of HTML Table Rows and their columns.
  </summary>
 	<remarks></remarks>
-</member><member name="P:HTML.HTMLWriter.HTMLTable.HTMLTableRow.Markup">
+</member><member name="P:HTML.HTMLWriter.HTMLTable.HTMLTableRow.Cells">
 	<summary>
  Get/Set the HTML markup for the current instance of an HTML Table Row directly.
  </summary>
@@ -299,6 +299,12 @@ HTML
 	<value></value>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:HTML.HTMLWriter.HTMLList.ListItem.SetListItem(System.String)">
+	<summary>
+ Resets the inner html of the current instance of a list item.
+ </summary>
+	<param name="InnerHTML">The html markup that will take up the inner html of the element</param>
+	<remarks></remarks>
 </member><member name="T:HTML.HTMLWriter.HTMLList">
 	<summary>
  Represents an instance of an HTML List. Consists of either bulleted or numbered lists.
@@ -369,12 +375,33 @@ HTML
  Represents an instance of an HTML Audio
  </summary>
 	<remarks></remarks>
+</member><member name="T:HTML.HTMLWriter.HTMLDiv">
+	<summary>
+ Represents an instance of an HTML Div
+ </summary>
+	<remarks></remarks>
+</member><member name="T:HTML.HTMLWriter.HTMLSpan">
+	<summary>
+ Represents an instance of an HTML Span
+ </summary>
+	<remarks></remarks>
 </member><member name="M:HTML.SharedFunctions.ReplaceBadChars(System.String)">
 	<summary>
  Searches for reserved words for HTML and replaces the carrots with appropriate meta characters.
  </summary>
 	<param name="InputLine">Incoming inner text.</param>
 	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:HTML.Quick_Tags.ToTop_Anchor">
+	<summary>
+ Represents the HTML Markup for a generic "To Top" link. This markup is styled to hover in the upper right corner of the page.
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:HTML.Quick_Tags.Overlay">
+	<summary>
+ Represents the HTML Markup for a generic "Overlay" control consisting of two Divs, two Anchors, and any other specified HTML Markup
+ </summary>
 	<remarks></remarks>
 </member><member name="P:HTML.My.Resources.Resources.ResourceManager">
 	<summary>
