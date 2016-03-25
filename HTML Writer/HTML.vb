@@ -2,7 +2,10 @@
 Imports System.Text
 
 Public Class HTMLWriter
-  Private str_html As New StringBuilder
+  Const LargeStringSize As Integer = 100000
+  Const MediumStringSize As Integer = 1000
+  Const SmallStringSize As Integer = 100
+  Private Shared str_html As StringBuilder
 
   ''' <summary>
   ''' Get/Set the condition of whether the HTMLWriter class should find and replace any invalid characteristics. Note that most HTML tags should be safe.
@@ -24,7 +27,7 @@ Public Class HTMLWriter
     End Get
     Set(value As String)
       If value.Contains("</html>") Then
-        str_html = New StringBuilder
+        str_html = New StringBuilder(LargeStringSize)
         str_html.Append(value)
       Else
         Throw New ApplicationException("{HTML}HTMLWriter: Cannot set 'HTMLMarkup' value without the '<html>' tag." + vbLf + "Cannot set to: '" + value + "'")
@@ -69,171 +72,141 @@ Public Class HTMLWriter
   ''' <remarks></remarks>
   Public Sub New(Optional ByVal SafetyMode As Boolean = True)
     _safeChars = SafetyMode
-    str_html = New StringBuilder
+    str_html = New StringBuilder(LargeStringSize)
     str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
   End Sub
 
   '' Series of methods to add markup to the current instance of an HTML Writer
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal RawHTML As String) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & RawHTML & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(RawHTML)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLForm) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLHeader) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLTable) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLImageMap) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLList) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLImage) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLCanvas) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLParagraph) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
   Public Overloads Shared Operator +(ByVal Writer As HTMLWriter, ByVal HTMLObject As HTMLAnchor) As HTMLWriter
-    If IsNothing(Writer.HTMLMarkup) Then
-      'Set first html tag
-      Writer.HTMLMarkup = "<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>"
-    End If
-    Writer.HTMLMarkup = Writer.HTMLMarkup.Replace("</html>", vbTab & HTMLObject.ToString & vbLf & "</html>")
+    Writer.AddToHTMLMarkup(HTMLObject)
     Return Writer
   End Operator
 
   Public Overloads Sub AddToHTMLMarkup(ByVal RawHTML As String)
     If IsNothing(str_html) Then
       'Set first html tag
-      str_html = New StringBuilder
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & RawHTML & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & RawHTML & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLForm)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLHeader)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLTable)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLImageMap)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLList)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLImage)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLCanvas)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLParagraph)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Overloads Sub AddToHTMLMarkup(ByVal Item As HTMLAnchor)
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", vbTab & Item.Markup & vbLf & "</html>")
+    str_html.Insert(str_html.Length - 7, vbTab & Item.Markup & vbLf)
   End Sub
   Public Sub AddBootstrapReference()
     If IsNothing(str_html) Then
       'Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
-    str_html = str_html.Replace("</html>", "<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script></html>")
-    str_html = str_html.Replace("</html>", "<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet' integrity='sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==' crossorigin='anonymous'/></html>")
-    str_html = str_html.Replace("</html>", "<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' integrity='sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==' crossorigin='anonymous'></script></html>")
+    str_html.Insert(str_html.Length - 7, "<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js'></script></html>")
+    str_html.Insert(str_html.Length - 7, "<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet' integrity='sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==' crossorigin='anonymous'/></html>")
+    str_html.Insert(str_html.Length - 7, "<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' integrity='sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==' crossorigin='anonymous'></script></html>")
   End Sub
 
   ''' <summary>
@@ -249,13 +222,10 @@ Public Class HTMLWriter
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _form
       End Get
-      Set(value As String)
-        _form = value
-      End Set
     End Property
     ''' <summary>
     ''' Creates a new instance of the HTML Form object.
@@ -281,7 +251,7 @@ Public Class HTMLWriter
     Public Sub CreateFormText(ByVal Label As String, ByVal Value As String, Optional ByVal LabelAttributes As AttributeList = Nothing, Optional ByVal TextAttributes As AttributeList = Nothing)
       If Not IsNothing(LabelAttributes) Then
         If Not IsNothing(TextAttributes) Then
-          _form = _form.Replace("</fieldset>" & vbLf, "<span" & LabelAttributes.ToString & ">" & ReplaceBadChars(Label) & "</span><input" & TextAttributes.tostring & " disabled='disabled' value=" & Chr(34) & ReplaceBadChars(Value) & Chr(34) & "/><br/>" & vbLf & "</fieldset>" & vbLf)
+          _form = _form.Replace("</fieldset>" & vbLf, "<span" & LabelAttributes.ToString & ">" & ReplaceBadChars(Label) & "</span><input" & TextAttributes.ToString & " disabled='disabled' value=" & Chr(34) & ReplaceBadChars(Value) & Chr(34) & "/><br/>" & vbLf & "</fieldset>" & vbLf)
         Else
           _form = _form.Replace("</fieldset>" & vbLf, "<span" & LabelAttributes.ToString & ">" & ReplaceBadChars(Label) & "</span><input disabled='disabled' value=" & Chr(34) & ReplaceBadChars(Value) & Chr(34) & "/><br/>" & vbLf & "</fieldset>" & vbLf)
         End If
@@ -289,7 +259,7 @@ Public Class HTMLWriter
         If Not IsNothing(TextAttributes) Then
           _form = _form.Replace("</fieldset>" & vbLf, "<span>" & ReplaceBadChars(Label) & "</span><input" & TextAttributes.ToString & " disabled='disabled' value=" & Chr(34) & ReplaceBadChars(Value) & Chr(34) & "/><br/>" & vbLf & "</fieldset>" & vbLf)
         Else
-          _form = _form.Replace("</fieldset>" & vbLf, "<span>" & ReplaceBadChars(Label) & "</span><input disabled='disabled' value=" & chr(34) & ReplaceBadChars(Value) & chr(34) & "/><br/>" & vbLf & "</fieldset>" & vbLf)
+          _form = _form.Replace("</fieldset>" & vbLf, "<span>" & ReplaceBadChars(Label) & "</span><input disabled='disabled' value=" & Chr(34) & ReplaceBadChars(Value) & Chr(34) & "/><br/>" & vbLf & "</fieldset>" & vbLf)
         End If
       End If
     End Sub
@@ -300,17 +270,24 @@ Public Class HTMLWriter
   ''' </summary>
   ''' <remarks></remarks>
   Class HTMLHeader
-    Private _header As New StringBuilder
+    Private _header As New StringBuilder(SmallStringSize)
     Private _attr As AttributeList
     Private _hs As HeaderSize
-    Public Property Markup As String
+    Private _inner As String
+
+    Public Property InnerText As String
+      Get
+        Return _inner
+      End Get
+      Set(value As String)
+        _inner = value
+        SetHeader()
+      End Set
+    End Property
+    Public ReadOnly Property Markup As String
       Get
         Return _header.ToString
       End Get
-      Set(value As String)
-        _header = New StringBuilder
-        _header.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -318,6 +295,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetHeader()
       End Set
     End Property
     Public Property Size As HeaderSize
@@ -326,6 +304,7 @@ Public Class HTMLWriter
       End Get
       Set(value As HeaderSize)
         _hs = value
+        SetHeader()
       End Set
     End Property
     Public Enum HeaderSize
@@ -350,14 +329,15 @@ Public Class HTMLWriter
     Public Sub New(ByVal InnerText As String, Optional ByVal Size As HeaderSize = HeaderSize.H1, Optional ByVal Attributes As AttributeList = Nothing)
       _hs = Size
       _attr = Attributes
-      SetHeader(InnerText)
+      _inner = InnerText
+      SetHeader()
     End Sub
 
-    Public Sub SetHeader(ByVal InnerText As String)
-      _header = New StringBuilder
+    Public Sub SetHeader()
+      _header = New StringBuilder(SmallStringSize)
       _header.Append("<" & GetHeaderSizeString(_hs))
       If Not IsNothing(_attr) Then _header.Append(_attr.ToString)
-      _header.Append(">" & ReplaceBadChars(InnerText) & "</" & GetHeaderSizeString(_hs) & ">")
+      _header.Append(">" & ReplaceBadChars(_inner) & "</" & GetHeaderSizeString(_hs) & ">")
     End Sub
     Public Function GetHeaderSizeString(ByVal Header As HeaderSize) As String
       Return Header.ToString
@@ -369,17 +349,24 @@ Public Class HTMLWriter
   ''' </summary>
   ''' <remarks></remarks>
   Class HTMLParagraph
-    Private _p As New StringBuilder
+    Private _p As New StringBuilder(MediumStringSize)
     Private _attr As AttributeList
+    Private _inner As New StringBuilder
 
-    Public Property Markup As String
+    Public Property InnerHTML As String
+      Get
+        Return _inner.ToString
+      End Get
+      Set(value As String)
+        _inner = New StringBuilder(MediumStringSize)
+        _inner.Append(value)
+        SetParagraph()
+      End Set
+    End Property
+    Public ReadOnly Property Markup As String
       Get
         Return _p.ToString
       End Get
-      Set(value As String)
-        _p = New StringBuilder
-        _p.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -387,6 +374,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetParagraph()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -395,22 +383,23 @@ Public Class HTMLWriter
 
     Public Sub New(ByVal InnerText As String, Optional ByVal Attributes As AttributeList = Nothing)
       _attr = Attributes
-      SetParagraph(InnerText)
+      _inner.Append(InnerText)
+      SetParagraph()
     End Sub
 
-    Public Sub SetParagraph(ByVal InnerText As String)
-      _p = New StringBuilder
+    Public Sub SetParagraph()
+      _p = New StringBuilder(MediumStringSize)
       _p.Append("<p")
-      If Not IsNothing(_attr) Then _p.Append(_attr.tostring)
-      _p.Append(">" & ReplaceBadChars(InnerText) & "</p>")
+      If Not IsNothing(_attr) Then _p.Append(_attr.ToString)
+      _p.Append(">" & ReplaceBadChars(_inner.ToString) & "</p>")
     End Sub
 
     Public Sub Append(ByVal ExtraText As String)
-      If String.IsNullOrEmpty(_p.ToString) Then
-        SetParagraph(ExtraText)
-      Else
-        _p.Insert(_p.ToString.LastIndexOf("<"), ReplaceBadChars(ExtraText))
+      If IsNothing(_inner) Then
+        _inner = New StringBuilder(MediumStringSize)
       End If
+      _inner.Append(ExtraText)
+      SetParagraph()
     End Sub
   End Class
 
@@ -419,9 +408,9 @@ Public Class HTMLWriter
   ''' </summary>
   ''' <remarks></remarks>
   Class HTMLTable
-    Private _table As New StringBuilder
+    Private _table As New StringBuilder(MediumStringSize)
     Private _attr As AttributeList
-    Private _rws() As HTMLTableRow
+    Private _rws As New List(Of HTMLTableRow)
 
     ''' <summary>
     ''' Get/Set the HTML markup for the current instance of an HTML Table directly.
@@ -429,14 +418,10 @@ Public Class HTMLWriter
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _table.ToString
       End Get
-      Set(value As String)
-        _table = New StringBuilder
-        _table.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -444,12 +429,13 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetTable()
       End Set
     End Property
     Public ReadOnly Property Count As Integer
       Get
         If Not IsNothing(_rws) Then
-          Return _rws.Length
+          Return _rws.Count
         Else
           Return -1
         End If
@@ -470,22 +456,17 @@ Public Class HTMLWriter
     Public Sub New(Optional ByVal Attributes As AttributeList = Nothing)
       _attr = Attributes
       SetTable()
-      'If Not IsNothing(Attributes) Then
-      '  _table.Append("<table" & Attributes.tostring & ">" & vbLf & "</table>" & vbLf)
-      'Else
-      '  _table.Append("<table>" & vbLf & "</table>" & vbLf)
-      'End If
     End Sub
     Public Sub SetTable()
-      _table = New StringBuilder
+      _table = New StringBuilder(MediumStringSize)
       Dim thead, tbody As StringBuilder
-      thead = New StringBuilder
-      tbody = New StringBuilder
+      thead = New StringBuilder(SmallStringSize)
+      tbody = New StringBuilder(MediumStringSize)
       thead.AppendLine("<thead>")
       tbody.AppendLine("<tbody>")
 
       _table.Append("<table")
-      If Not IsNothing(_attr) Then _table.Append(_attr.tostring)
+      If Not IsNothing(_attr) Then _table.Append(_attr.ToString)
       _table.Append(">" & vbLf)
       If Not IsNothing(_rws) Then
         For Each rw As HTMLTableRow In _rws
@@ -505,12 +486,8 @@ Public Class HTMLWriter
     End Sub
 
     Public Sub AddTableRow(ByVal Row As HTMLTableRow)
-      If Not IsNothing(_rws) Then
-        ReDim Preserve _rws(_rws.Length)
-      Else
-        ReDim _rws(0)
-      End If
-      _rws(_rws.Length - 1) = Row
+      If IsNothing(_rws) Then _rws = New List(Of HTMLTableRow)
+      _rws.Add(Row)
       SetTable()
     End Sub
 
@@ -519,10 +496,10 @@ Public Class HTMLWriter
     ''' </summary>
     ''' <remarks></remarks>
     Class HTMLTableRow
-      Private _tr As New StringBuilder
+      Private _tr As New StringBuilder(SmallStringSize)
       Private _attr As AttributeList
       Private _clType As HTMLTableCell.CellType
-      Private _cls() As HTMLTableCell
+      Private _cls As New List(Of HTMLTableCell)
       ''' <summary>
       ''' Get/Set the HTML markup for the current instance of an HTML Table Row directly.
       ''' </summary>
@@ -531,7 +508,7 @@ Public Class HTMLWriter
       ''' <remarks></remarks>
       Public ReadOnly Property Cells As HTMLTableCell()
         Get
-          Return _cls
+          Return _cls.ToArray
         End Get
       End Property
       Public ReadOnly Property CellType As HTMLTableCell.CellType
@@ -554,12 +531,13 @@ Public Class HTMLWriter
         End Get
         Set(value As AttributeList)
           _attr = value
+          SetTableRow()
         End Set
       End Property
       Public ReadOnly Property Count As Integer
         Get
           If Not IsNothing(_cls) Then
-            Return _cls.Length
+            Return _cls.Count
           Else
             Return -1
           End If
@@ -583,7 +561,7 @@ Public Class HTMLWriter
       End Sub
 
       Public Sub SetTableRow()
-        _tr = New StringBuilder
+        _tr = New StringBuilder(SmallStringSize)
         _tr.Append("<tr")
         If Not IsNothing(_attr) Then _tr.Append(_attr.ToString)
         _tr.Append(">" & vbLf)
@@ -602,24 +580,13 @@ Public Class HTMLWriter
       Public Overloads Sub AddTableColumn(ByVal InnerHTML As String, Optional ByVal Attributes As AttributeList = Nothing)
         AddTableCell(New HTMLTableCell(InnerHTML, HTMLTableCell.CellType.Row, Attributes))
         SetTableRow()
-        'If Not IsNothing(Attributes) Then
-        '  _tr = _tr.Replace("</tr>" & vbLf, vbTab & "<td" & Attributes.tostring & ">" & ReplaceBadChars(InnerHTML) & "</td>" & vbLf & "</tr>" & vbLf)
-        'Else
-        '  _tr = _tr.Replace("</tr>" & vbLf, vbTab & "<td>" & ReplaceBadChars(InnerHTML) & "</td>" & vbLf & "</tr>" & vbLf)
-        'End If
       End Sub
       Public Overloads Sub AddTableCell(ByVal Cell As HTMLTable.HTMLTableCell)
-        If Not IsNothing(_cls) Then
-          ReDim Preserve _cls(_cls.Length)
-        Else
-          ReDim _cls(0)
-        End If
-        _cls(_cls.Length - 1) = Cell
+        If IsNothing(_cls) Then _cls = New List(Of HTMLTableCell)
+        _cls.Add(Cell)
         _clType = Cell.Type
         SetTableRow()
       End Sub
-
-
     End Class
     ''' <summary>
     ''' Represents the instance of an HTML Table Cell
@@ -629,23 +596,30 @@ Public Class HTMLWriter
       Private _td As New StringBuilder
       Private _attr As AttributeList
       Private _ct As CellType
+      Private _inner As New StringBuilder
       Public Enum CellType
         Header
         Row
       End Enum
+      Public Property InnerHTML As String
+        Get
+          Return _inner.ToString
+        End Get
+        Set(value As String)
+          _inner = New StringBuilder
+          _inner.Append(value)
+          SetTableCell()
+        End Set
+      End Property
       Public ReadOnly Property Type As CellType
         Get
           Return _ct
         End Get
       End Property
-      Public Property Markup As String
+      Public ReadOnly Property Markup As String
         Get
           Return _td.ToString
         End Get
-        Set(value As String)
-          _td = New StringBuilder
-          _td.Append(value)
-        End Set
       End Property
       Public Property AttributeList As AttributeList
         Get
@@ -653,19 +627,21 @@ Public Class HTMLWriter
         End Get
         Set(value As AttributeList)
           _attr = value
+          SetTableCell()
         End Set
       End Property
       Public Overrides Function ToString() As String
         Return _td.ToString
       End Function
 
-      Public Sub New(ByVal InnerHTML As String, ByVal CellType As CellType, Optional ByVal Attributes As AttributeList = Nothing)
+      Public Sub New(ByVal InnerText As String, ByVal CellType As CellType, Optional ByVal Attributes As AttributeList = Nothing)
         _attr = Attributes
         _ct = CellType
-        SetTableCell(InnerHTML)
+        _inner.Append(InnerText)
+        SetTableCell()
       End Sub
 
-      Public Function SetTableCell(ByVal InnerHTML As String) As String
+      Public Function SetTableCell() As String
         _td = New StringBuilder
         Dim ct As String
         Select Case _ct
@@ -1196,10 +1172,10 @@ Public Class HTMLWriter
   ''' </summary>
   ''' <remarks></remarks>
   Class HTMLList
-    Private _list As New StringBuilder
+    Private _list As New StringBuilder(MediumStringSize)
     Private _attr As AttributeList
     Private _ltype As ListType
-    Private _lis() As ListItem
+    Private _lis As New List(Of ListItem)
 
     ''' <summary>
     ''' Get the raw HTML markup for the current instance of an HTML List.
@@ -1207,7 +1183,7 @@ Public Class HTMLWriter
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    ReadOnly Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         SetList()
         Return _list.ToString
@@ -1219,6 +1195,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetList()
       End Set
     End Property
     ''' <summary>
@@ -1248,7 +1225,7 @@ Public Class HTMLWriter
     Public ReadOnly Property Count As Integer
       Get
         If Not IsNothing(_lis) Then
-          Return _lis.Length
+          Return _lis.Count
         Else
           Return -1
         End If
@@ -1281,17 +1258,12 @@ Public Class HTMLWriter
     End Sub
 
     Public Sub AddListItem(ByVal ListItem As ListItem)
-      If Not IsNothing(_lis) Then
-        ReDim Preserve _lis(_lis.Length)
-      Else
-        ReDim _lis(0)
-      End If
-      _lis(_lis.Length - 1) = ListItem
-
+      If IsNothing(_lis) Then _lis = New List(Of ListItem)
+      _lis.Add(ListItem)
       SetList()
     End Sub
     Public Sub SetList()
-      _list = New StringBuilder
+      _list = New StringBuilder(MediumStringSize)
       _list.Append("<" & GetListTypeTag(_ltype))
       If Not IsNothing(_attr) Then _list.Append(_attr.ToString)
       _list.Append(">" & vbLf)
@@ -1308,15 +1280,10 @@ Public Class HTMLWriter
       Private _attr As AttributeList
       Private _inner As StringBuilder
 
-      Public Property Markup As String
+      Public ReadOnly Property Markup As String
         Get
-          SetListItem(_inner.ToString)
           Return _li.ToString
         End Get
-        Set(value As String)
-          _li = New StringBuilder
-          _li.Append(value)
-        End Set
       End Property
       Public Property InnerHTML As String
         Get
@@ -1324,6 +1291,7 @@ Public Class HTMLWriter
         End Get
         Set(value As String)
           _inner = New StringBuilder(value)
+          SetListItem()
         End Set
       End Property
       Public Property AttributeList As AttributeList
@@ -1332,10 +1300,10 @@ Public Class HTMLWriter
         End Get
         Set(value As AttributeList)
           _attr = value
+          SetListItem()
         End Set
       End Property
       Public Overrides Function ToString() As String
-        SetListItem(_inner.ToString)
         Return _li.ToString
       End Function
 
@@ -1462,21 +1430,17 @@ Public Class HTMLWriter
     Private _attr As AttributeList
     Private _name, _href, _targetFrame As String
     Private _target As TargetType
-
+    Private _inner As New StringBuilder
     ''' <summary>
     ''' Get/Set the HTML markup for the current instance of an HTML Anchor directly.
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _a.ToString
       End Get
-      Set(value As String)
-        _a = New StringBuilder
-        _a.Append(value)
-      End Set
     End Property
     Public Property Name As String
       Get
@@ -1484,6 +1448,17 @@ Public Class HTMLWriter
       End Get
       Set(value As String)
         _name = value
+        SetAnchor()
+      End Set
+    End Property
+    Public Property InnerHTML As String
+      Get
+        Return _inner.ToString
+      End Get
+      Set(value As String)
+        _inner = New StringBuilder
+        _inner.Append(value)
+        SetAnchor()
       End Set
     End Property
     Public Property HREF As String
@@ -1492,6 +1467,7 @@ Public Class HTMLWriter
       End Get
       Set(value As String)
         _href = value
+        SetAnchor()
       End Set
     End Property
     Public Property Target As TargetType
@@ -1500,6 +1476,7 @@ Public Class HTMLWriter
       End Get
       Set(value As TargetType)
         _target = value
+        SetAnchor()
       End Set
     End Property
     Public Property TargetFrameName As String
@@ -1508,6 +1485,7 @@ Public Class HTMLWriter
       End Get
       Set(value As String)
         _targetFrame = value
+        SetAnchor()
       End Set
     End Property
     Public Property AttributeList As AttributeList
@@ -1516,6 +1494,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetAnchor()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -1528,10 +1507,11 @@ Public Class HTMLWriter
       _target = Target
       _targetFrame = TargetFrame
       _attr = Attributes
-      SetAnchor(InnerText)
+      _inner.Append(InnerText)
+      SetAnchor()
     End Sub
 
-    Public Sub SetAnchor(ByVal InnerText As String)
+    Public Sub SetAnchor()
       _a = New StringBuilder
       _a.Append("<a")
       If Not IsNothing(_attr) Then _a.Append(_attr.ToString & "")
@@ -1549,7 +1529,7 @@ Public Class HTMLWriter
           _a.Append(" target=" & Chr(34) & GetTargetTypeString(Target) & Chr(34))
         End If
       End If
-      _a.Append(">" & ReplaceBadChars(InnerText) & "</a>" & vbLf)
+      _a.Append(">" & ReplaceBadChars(_inner.ToString) & "</a>" & vbLf)
     End Sub
     Private Function GetTargetTypeString(ByVal Target As TargetType) As String
       Select Case Target
@@ -1582,14 +1562,10 @@ Public Class HTMLWriter
     Private _attr As AttributeList
     Private _type As InputType
 
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _input.ToString
       End Get
-      Set(value As String)
-        _input = New StringBuilder
-        _input.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -1597,6 +1573,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetInput()
       End Set
     End Property
     Public Property Type As InputType
@@ -1605,6 +1582,7 @@ Public Class HTMLWriter
       End Get
       Set(value As InputType)
         _type = value
+        SetInput()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -1677,14 +1655,20 @@ Public Class HTMLWriter
   Class HTMLLabel
     Private _label As New StringBuilder
     Private _attr As AttributeList
+    Private _inner As String
 
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _label.ToString
       End Get
+    End Property
+    Public Property InnerHTML As String
+      Get
+        Return _inner.ToString
+      End Get
       Set(value As String)
-        _label = New StringBuilder
-        _label.Append(value)
+        _inner = value
+        SetLabel()
       End Set
     End Property
     Public Property AttributeList As AttributeList
@@ -1693,6 +1677,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetLabel()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -1701,14 +1686,15 @@ Public Class HTMLWriter
 
     Public Sub New(ByVal InnerText As String, Optional ByVal Attributes As AttributeList = Nothing)
       _attr = Attributes
-      SetLabel(InnerText)
+      _inner = InnerText
+      SetLabel()
     End Sub
 
-    Public Sub SetLabel(ByVal InnerText As String)
+    Public Sub SetLabel()
       _label = New StringBuilder
       _label.Append("<label")
       If Not IsNothing(_attr) Then _label.Append(_attr.ToString)
-      _label.Append(">" & ReplaceBadChars(InnerText) & "</label>")
+      _label.Append(">" & ReplaceBadChars(_inner) & "</label>")
     End Sub
   End Class
 
@@ -1719,16 +1705,12 @@ Public Class HTMLWriter
   Class HTMLSelect
     Private _select As New StringBuilder
     Private _attr As AttributeList
-    Private _ops() As HTMLOption
+    Private _ops As New List(Of HTMLOption)
 
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _select.ToString
       End Get
-      Set(value As String)
-        _select = New StringBuilder
-        _select.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -1736,14 +1718,16 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetSelect()
       End Set
     End Property
     Public Property Options As HTMLOption()
       Get
-        Return _ops
+        Return _ops.ToArray
       End Get
       Set(value As HTMLOption())
-        _ops = value
+        _ops = New List(Of HTMLOption)
+        _ops.AddRange(value)
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -1772,12 +1756,8 @@ Public Class HTMLWriter
       _select.AppendLine("</select>")
     End Sub
     Public Sub AddOption(ByVal NewOption As HTMLOption)
-      If Not IsNothing(_ops) Then
-        ReDim Preserve _ops(_ops.Length)
-      Else
-        ReDim _ops(0)
-      End If
-      _ops(_ops.Length - 1) = NewOption
+      If IsNothing(_ops) Then _ops = New List(Of HTMLOption)
+      _ops.Add(NewOption)
       SetSelect()
     End Sub
 
@@ -1785,14 +1765,20 @@ Public Class HTMLWriter
       Private _option As StringBuilder
       Private _attr As AttributeList
       Private _val As String
+      Private _inner As String
 
-      Public Property Markup As String
+      Public ReadOnly Property Markup As String
         Get
           Return _option.ToString
         End Get
+      End Property
+      Public Property InnerHTML As String
+        Get
+          Return _inner
+        End Get
         Set(value As String)
-          _option = New StringBuilder
-          _option.Append(value)
+          _inner = value
+          SetOption()
         End Set
       End Property
       Public Property Value As String
@@ -1810,15 +1796,17 @@ Public Class HTMLWriter
         End Get
         Set(value As AttributeList)
           _attr = value
+          SetOption()
         End Set
       End Property
       Public Overrides Function ToString() As String
         Return _option.ToString
       End Function
 
-      Public Sub New(ByVal InnerText As String, Optional ByVal Attributes As AttributeList = Nothing)
+      Public Sub New(ByVal InnerText As String, Optional ByVal OptionalValue As String = "", Optional ByVal Attributes As AttributeList = Nothing)
         _attr = Attributes
-        _val = InnerText
+        _val = OptionalValue
+        _inner = InnerText
         SetOption()
       End Sub
 
@@ -1826,7 +1814,7 @@ Public Class HTMLWriter
         _option = New StringBuilder
         _option.Append("<option")
         If Not IsNothing(_attr) Then _option.Append(_attr.ToString)
-        _option.Append(">" & ReplaceBadChars(_val) & "</option>")
+        _option.Append(" value=" & Chr(34) & _val & Chr(34) & ">" & ReplaceBadChars(_inner) & "</option>")
       End Sub
     End Class
   End Class
@@ -1839,14 +1827,10 @@ Public Class HTMLWriter
     Private _progress As New StringBuilder
     Private _attr As AttributeList
 
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _progress.ToString
       End Get
-      Set(value As String)
-        _progress = New StringBuilder
-        _progress.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -1854,6 +1838,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetProgress()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -1880,14 +1865,20 @@ Public Class HTMLWriter
   Class HTMLMeter
     Private _meter As New StringBuilder
     Private _attr As AttributeList
+    Private _inner As String
 
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _meter.ToString
       End Get
+    End Property
+    Public Property InnerHTML As String
+      Get
+        Return _inner
+      End Get
       Set(value As String)
-        _meter = New StringBuilder
-        _meter.Append(value)
+        _inner = value
+        SetMeter()
       End Set
     End Property
     Public Property AttributeList As AttributeList
@@ -1896,6 +1887,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetMeter()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -1904,14 +1896,15 @@ Public Class HTMLWriter
 
     Public Sub New(Optional ByVal InnerText As String = "", Optional ByVal Attributes As AttributeList = Nothing)
       _attr = Attributes
-      SetMeter(InnerText)
+      _inner = InnerText
+      SetMeter()
     End Sub
 
-    Public Sub SetMeter(Optional ByVal InnerText As String = "")
+    Public Sub SetMeter()
       _meter = New StringBuilder
       _meter.Append("<meter")
       If Not IsNothing(_attr) Then _meter.Append(_attr.ToString)
-      _meter.Append(">" & ReplaceBadChars(InnerText) & "</meter>")
+      _meter.Append(">" & ReplaceBadChars(_inner) & "</meter>")
     End Sub
   End Class
 
@@ -1922,16 +1915,12 @@ Public Class HTMLWriter
   Class HTMLVideo
     Private _video As New StringBuilder
     Private _attr As AttributeList
-    Private _srcs() As HTMLSource
+    Private _srcs As New List(Of HTMLSource)
 
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _video.ToString
       End Get
-      Set(value As String)
-        _video = New StringBuilder
-        _video.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -1939,14 +1928,16 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetVideo()
       End Set
     End Property
     Public Property Sources As HTMLSource()
       Get
-        Return _srcs
+        Return _srcs.ToArray
       End Get
       Set(value As HTMLSource())
-        _srcs = value
+        _srcs = New List(Of HTMLSource)
+        _srcs.AddRange(value)
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -1975,12 +1966,8 @@ Public Class HTMLWriter
       _video.AppendLine("</video>")
     End Sub
     Public Sub AddSource(ByVal Source As HTMLSource)
-      If Not IsNothing(_srcs) Then
-        ReDim Preserve _srcs(_srcs.Length)
-      Else
-        ReDim _srcs(0)
-      End If
-      _srcs(_srcs.Length - 1) = Source
+      If IsNothing(_srcs) Then _srcs = New List(Of HTMLSource)
+      _srcs.Add(Source)
       SetVideo()
     End Sub
 
@@ -1988,14 +1975,10 @@ Public Class HTMLWriter
       Private _source As New StringBuilder
       Private _attr As AttributeList
 
-      Public Property Markup As String
+      Public ReadOnly Property Markup As String
         Get
           Return _source.ToString
         End Get
-        Set(value As String)
-          _source = New StringBuilder
-          _source.Append(value)
-        End Set
       End Property
       Public Property AttributeList As AttributeList
         Get
@@ -2003,6 +1986,7 @@ Public Class HTMLWriter
         End Get
         Set(value As AttributeList)
           _attr = value
+          SetSource()
         End Set
       End Property
       Public Overrides Function ToString() As String
@@ -2030,16 +2014,12 @@ Public Class HTMLWriter
   Class HTMLAudio
     Private _audio As New StringBuilder
     Private _attr As AttributeList
-    Private _srcs() As HTMLSource
+    Private _srcs As New List(Of HTMLSource)
 
-    Public Property Markup As String
+    Public ReadOnly Property Markup As String
       Get
         Return _audio.ToString
       End Get
-      Set(value As String)
-        _audio = New StringBuilder
-        _audio.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -2047,14 +2027,16 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetAudio()
       End Set
     End Property
     Public Property Sources As HTMLSource()
       Get
-        Return _srcs
+        Return _srcs.ToArray
       End Get
       Set(value As HTMLSource())
-        _srcs = value
+        _srcs = New List(Of HTMLSource)
+        _srcs.AddRange(value)
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -2083,12 +2065,8 @@ Public Class HTMLWriter
       _audio.AppendLine("</audio>")
     End Sub
     Public Sub AddSource(ByVal Source As HTMLSource)
-      If Not IsNothing(_srcs) Then
-        ReDim Preserve _srcs(_srcs.Length)
-      Else
-        ReDim _srcs(0)
-      End If
-      _srcs(_srcs.Length - 1) = Source
+      If IsNothing(_srcs) Then _srcs = New List(Of HTMLSource)
+      _srcs.Add(Source)
       SetAudio()
     End Sub
 
@@ -2096,14 +2074,10 @@ Public Class HTMLWriter
       Private _source As New StringBuilder
       Private _attr As AttributeList
 
-      Public Property Markup As String
+      Public ReadOnly Property Markup As String
         Get
           Return _source.ToString
         End Get
-        Set(value As String)
-          _source = New StringBuilder
-          _source.Append(value)
-        End Set
       End Property
       Public Property AttributeList As AttributeList
         Get
@@ -2111,6 +2085,7 @@ Public Class HTMLWriter
         End Get
         Set(value As AttributeList)
           _attr = value
+          SetSource()
         End Set
       End Property
       Public Overrides Function ToString() As String
@@ -2136,17 +2111,14 @@ Public Class HTMLWriter
   ''' </summary>
   ''' <remarks></remarks>
   Class HTMLDiv
-    Private _div As New StringBuilder
+    Private _div As New StringBuilder(MediumStringSize)
     Private _attr As AttributeList
-    Private _inner As StringBuilder
-    Public Property Markup As String
+    Private _inner As New StringBuilder(MediumStringSize)
+
+    Public ReadOnly Property Markup As String
       Get
         Return _div.ToString
       End Get
-      Set(value As String)
-        _div = New StringBuilder
-        _div.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -2154,6 +2126,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetDiv()
       End Set
     End Property
     Public Property InnerHTML As String
@@ -2163,6 +2136,7 @@ Public Class HTMLWriter
       Set(value As String)
         _inner = New StringBuilder
         _inner.Append(value)
+        SetDiv()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -2175,14 +2149,13 @@ Public Class HTMLWriter
 
     Public Sub New(Optional ByVal InnerHTML As String = "", Optional ByVal Attributes As AttributeList = Nothing)
       _attr = Attributes
-      _inner = New StringBuilder
       _inner.Append(InnerHTML)
       SetDiv()
     End Sub
 
     Public Sub SetDiv(Optional ByVal InnerHTML As String = "")
-      If Not String.IsNullOrEmpty(InnerHTML) Then _inner = New StringBuilder : _inner.Append(InnerHTML)
-      _div = New StringBuilder
+      If Not String.IsNullOrEmpty(InnerHTML) Then _inner = New StringBuilder(MediumStringSize) : _inner.Append(InnerHTML)
+      _div = New StringBuilder(MediumStringSize)
       _div.Append("<div")
       If Not IsNothing(_attr) Then _div.Append(_attr.ToString)
       _div.Append(">" & vbLf)
@@ -2190,6 +2163,7 @@ Public Class HTMLWriter
       _div.AppendLine("</div>")
     End Sub
     Public Sub AppendDiv(ByVal ExtraHTML As String)
+      If IsNothing(_inner) Then _inner = New StringBuilder(MediumStringSize)
       _inner.Append(ExtraHTML)
       SetDiv()
     End Sub
@@ -2200,17 +2174,13 @@ Public Class HTMLWriter
   ''' </summary>
   ''' <remarks></remarks>
   Class HTMLSpan
-    Private _span As New StringBuilder
+    Private _span As New StringBuilder(MediumStringSize)
     Private _attr As AttributeList
-    Private _inner As StringBuilder
-    Public Property Markup As String
+    Private _inner As New StringBuilder(MediumStringSize)
+    Public ReadOnly Property Markup As String
       Get
         Return _span.ToString
       End Get
-      Set(value As String)
-        _span = New StringBuilder
-        _span.Append(value)
-      End Set
     End Property
     Public Property AttributeList As AttributeList
       Get
@@ -2218,6 +2188,7 @@ Public Class HTMLWriter
       End Get
       Set(value As AttributeList)
         _attr = value
+        SetSpan()
       End Set
     End Property
     Public Property InnerHTML As String
@@ -2227,6 +2198,7 @@ Public Class HTMLWriter
       Set(value As String)
         _inner = New StringBuilder
         _inner.Append(value)
+        SetSpan()
       End Set
     End Property
     Public Overrides Function ToString() As String
@@ -2239,14 +2211,13 @@ Public Class HTMLWriter
 
     Public Sub New(Optional ByVal InnerHTML As String = "", Optional ByVal Attributes As AttributeList = Nothing)
       _attr = Attributes
-      _inner = New StringBuilder
       _inner.Append(InnerHTML)
       SetSpan()
     End Sub
 
     Public Sub SetSpan(Optional ByVal InnerHTML As String = "")
-      If Not String.IsNullOrEmpty(InnerHTML) Then _inner = New StringBuilder : _inner.Append(InnerHTML)
-      _span = New StringBuilder
+      If Not String.IsNullOrEmpty(InnerHTML) Then _inner = New StringBuilder(MediumStringSize) : _inner.Append(InnerHTML)
+      _span = New StringBuilder(MediumStringSize)
       _span.Append("<div")
       If Not IsNothing(_attr) Then _span.Append(_attr.ToString)
       _span.Append(">" & vbLf)
@@ -2254,6 +2225,7 @@ Public Class HTMLWriter
       _span.AppendLine("</div>")
     End Sub
     Public Sub AppendSpan(ByVal ExtraHTML As String)
+      If IsNothing(_inner) Then _inner = New StringBuilder(MediumStringSize)
       _inner.Append(ExtraHTML)
       SetSpan()
     End Sub
@@ -2264,15 +2236,11 @@ Public Class AttributeList
   Private _attr As New StringBuilder
   Private _ai As List(Of AttributeItem)
   Private _si As List(Of StyleItem)
-  Public Property Markup As String
+  Public ReadOnly Property Markup As String
     Get
       SetAttributeList()
       Return _attr.ToString
     End Get
-    Set(value As String)
-      _attr = New StringBuilder
-      _attr.Append(value)
-    End Set
   End Property
   Public Overrides Function ToString() As String
     SetAttributeList()
@@ -2288,24 +2256,12 @@ Public Class AttributeList
   End Operator
 
   Public Sub AddAttribute(ByVal Attribute As AttributeItem)
-    'If Not IsNothing(_ai) Then
-    '  ReDim Preserve _ai(_ai.Length)
-    'Else
-    '  ReDim _ai(0)
-    'End If
-    '_ai(_ai.Length - 1) = Attribute
     If IsNothing(_ai) Then _ai = New List(Of AttributeItem)
     _ai.Add(Attribute)
 
     SetAttributeList()
   End Sub
   Public Sub AddStyleItem(ByVal Style As StyleItem)
-    'If Not IsNothing(_si) Then
-    '  ReDim Preserve _si(_si.Length)
-    'Else
-    '  ReDim _si(0)
-    'End If
-    '_si(_si.Length - 1) = Style
     If IsNothing(_si) Then _si = New List(Of StyleItem)
     _si.Add(Style)
 
@@ -2506,59 +2462,71 @@ Public Module SharedFunctions
   ''' <remarks></remarks>
   Public Function ReplaceBadChars(ByVal InputLine As String) As String
     If _safeChars Then
-      'Replace HTML markup characters with viewable alternatatives
-      If Not String.IsNullOrEmpty(InputLine) Then
-        For i = 0 To BadChars.Length - 1 Step 1
-          If InputLine.Contains(BadChars(i)) Then
-            If InputLine.Contains("<") And InputLine.Contains(">") Then
-              'Verify carrots aren't just HTML Tags, then replace as necessary
-              Dim Flags() As String = Split(InputLine, "<")
-              'Isolate tags
-              Dim blnFlag As Boolean
-              For n = 0 To Flags.Length - 1 Step 1
-                If String.IsNullOrEmpty(Flags(n)) Then
-                  Continue For
-                ElseIf Not Flags(n).Contains(">") Then
-                  Continue For
-                ElseIf Flags(n).Contains(">") And Not Flags(n).Contains("<") Then
-                  Flags(n) = "<" & Flags(n)
-                End If
-                'Compare to HTML Tags, assume it's not
-                blnFlag = True
-                For Each tag As String In HTMLTags
-                  If Flags(n).StartsWith("<" & tag & " ") Or Flags(n).StartsWith("<" & tag & ">") Or Flags(n).StartsWith("</" & tag & ">") Then
-                    blnFlag = False
-                    'No need to continue if Tag is validated
-                    Exit For
-                  End If
-                Next
-                'if flag is thrown(default state), then replace input with good characters
-                If blnFlag Then
-                  InputLine = InputLine.Replace(Flags(n), Flags(n).Replace(BadChars(3), GoodChars(3)).Replace(BadChars(4), GoodChars(4)))
-                End If
-              Next
-            Else
-              'Replace bad characters
-              Try
-                InputLine = InputLine.Replace(BadChars(i), GoodChars(i))
-              Catch ex As Exception
-                Throw New ApplicationException("{HTML}ReplaceBadChars2: Catch=" & ex.Message)
-              End Try
-            End If
-          End If
-        Next
-      End If
+      Dim reg As System.Text.RegularExpressions.Regex
+      Dim isTag As Boolean = False
+      Dim mats As New List(Of RegularExpressions.Match)
+      '' Reformat any good opening tags
+      For Each tag As String In HTMLTags
+        reg = New RegularExpressions.Regex("\<" & tag & "(.*?)\>")
+        InputLine = reg.Replace(InputLine, "|^|" & tag & "$1|v|")
+      Next
+      '' Reformat any good closing tags
+      For Each tag As String In HTMLTags
+        reg = New RegularExpressions.Regex("\</" & tag & "\>")
+        InputLine = reg.Replace(InputLine, "|^|/" & tag & "|v|")
+      Next
+
+      '' Reformat any bad tags
+      reg = New RegularExpressions.Regex("\<(.*?)\>")
+      InputLine = reg.Replace(InputLine, "&lt;$1&gt;")
+
+      '' Reformat any reformatted tags back into HTML
+      reg = New RegularExpressions.Regex("\|\^\|(.*?)\|v\|")
+      InputLine = reg.Replace(InputLine, "<$1>")
+
+      ''Replace HTML markup characters with viewable alternatatives
+      'If Not String.IsNullOrEmpty(InputLine) Then
+      '  For i = 0 To BadChars.Length - 1 Step 1
+      '    If InputLine.Contains(BadChars(i)) Then
+      '      If InputLine.Contains("<") And InputLine.Contains(">") Then
+      '        'Verify carrots aren't just HTML Tags, then replace as necessary
+      '        Dim Flags() As String = Split(InputLine, "<")
+      '        'Isolate tags
+      '        Dim blnFlag As Boolean
+      '        For n = 0 To Flags.Length - 1 Step 1
+      '          If String.IsNullOrEmpty(Flags(n)) Then
+      '            Continue For
+      '          ElseIf Not Flags(n).Contains(">") Then
+      '            Continue For
+      '          ElseIf Flags(n).Contains(">") And Not Flags(n).Contains("<") Then
+      '            Flags(n) = "<" & Flags(n)
+      '          End If
+      '          'Compare to HTML Tags, assume it's not
+      '          blnFlag = True
+      '          For Each tag As String In HTMLTags
+      '            If Flags(n).StartsWith("<" & tag & " ") Or Flags(n).StartsWith("<" & tag & ">") Or Flags(n).StartsWith("</" & tag & ">") Then
+      '              blnFlag = False
+      '              'No need to continue if Tag is validated
+      '              Exit For
+      '            End If
+      '          Next
+      '          'if flag is thrown(default state), then replace input tags with good characters
+      '          If blnFlag Then
+      '            InputLine = InputLine.Replace(Flags(n), Flags(n).Replace(BadChars(3), GoodChars(3)).Replace(BadChars(4), GoodChars(4)))
+      '          End If
+      '        Next
+      '      Else
+      '        'Replace bad characters
+      '        Try
+      '          InputLine = InputLine.Replace(BadChars(i), GoodChars(i))
+      '        Catch ex As Exception
+      '          Throw New ApplicationException("{HTML}ReplaceBadChars2: Catch=" & ex.Message)
+      '        End Try
+      '      End If
+      '    End If
+      '  Next
+      'End If
     End If
     Return InputLine
   End Function
-  ' ''' <summary>
-  ' ''' Returns a reformatted HTML element innertext with specified anchor (<a></a>) tags. Specify HREF and Id in AttributeList
-  ' ''' </summary>
-  ' ''' <param name="Attributes">Used to specify values for HREF, ID, TARGET, etc.</param>
-  ' ''' <param name="InputText">Original Inner Text</param>
-  ' ''' <returns></returns>
-  ' ''' <remarks></remarks>
-  'Public Function IncludeAnchor(ByVal Attributes As AttributeList, ByVal InputText As String) As String
-  '  Return "<a" & Attributes.tostring & ">" & InputText '& "</a>"
-  'End Function
 End Module

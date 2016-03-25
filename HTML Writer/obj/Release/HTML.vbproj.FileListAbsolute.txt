@@ -15,3 +15,12 @@ C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj
 C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML.xml
 C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML.pdb
 C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML Writer\obj\Release\HTML.vbprojResolveAssemblyReference.cache
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\bin\Release\HTML.dll
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\bin\Release\HTML.pdb
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\bin\Release\HTML.xml
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.vbprojResolveAssemblyReference.cache
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.Resources.resources
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.vbproj.GenerateResource.Cache
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.dll
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.xml
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.pdb
