@@ -113,6 +113,9 @@
     <Content Include="HTMLElementAttributes.xml">
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="JavaScript\SortTable.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

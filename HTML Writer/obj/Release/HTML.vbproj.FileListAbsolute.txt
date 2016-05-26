@@ -24,3 +24,4 @@ C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTM
 C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.dll
 C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.xml
 C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\obj\Release\HTML.pdb
+C:\Users\Trais\Documents\Visual Studio 2010\Projects\HTML Writer\HTML-Writer\HTML Writer\bin\Release\JavaScript\SortTable.js

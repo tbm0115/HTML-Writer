@@ -208,6 +208,19 @@ Public Class HTMLWriter
     str_html.Insert(str_html.Length - 7, "<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet' integrity='sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==' crossorigin='anonymous'/></html>")
     str_html.Insert(str_html.Length - 7, "<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' integrity='sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==' crossorigin='anonymous'></script></html>")
   End Sub
+  Public Sub AddSortTableClass()
+    If IsNothing(str_html) Then
+      '' Set first html tag
+      str_html = New StringBuilder(LargeStringSize)
+      str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
+    End If
+    str_html.Insert(str_html.Length - 7, "<script type='text/javascript'>" & My.Resources.SortTable & vbLf & _
+                    "var __tables = document.querySelectorAll('table');" & vbLf & _
+                    "for (var len = __tables.length, n = 0; n < len; n++){" & vbLf & _
+                    "var __tmpSortTable = new SortTableClass.SortTable(__tables[n]);" & vbLf & _
+                    "__tmpSortTable.UpdateTableHTML(__tables[n]);" & vbLf & _
+                    "}</script>")
+  End Sub
 
   ''' <summary>
   ''' Represents an instance of a series of TextBox controls bound within the FieldSet HTML Element.
