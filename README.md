@@ -58,8 +58,7 @@ Start with an <pre><code>HTMLWriter</code></pre> object and work from there.
 
 Example:
 Write a simple table
-<pre>
-<code>
+```vb
 Imports HTML, HTMLWriter
 
 Public Class Form1
@@ -94,14 +93,14 @@ Public Class Form1
     File.WriteAllText(FilePath, Report.HTMLMarkup)
   End Sub
 End Class
-</code></pre>
+```
 
 
 #Attributes
 HTML tag attributes are handled a bit more dynamically. Attributes can be applied to almost every tag object in this library using the AttributeList object. This object utilizes string arrays to create either Attribute Items or Style Items (depending on the type of attribute).
 
 Here's an example of the AttributeList at work. Take the for loop in the example above into consideration, we're going to add some styling and attribtes to the controls:
-<pre><code>
+```vb
 For i = 0 To 10 Step 1
   '' Alternate the row styling with each row
   If i and 1 Then
@@ -117,4 +116,4 @@ For i = 0 To 10 Step 1
   Debug.WriteLine(vbTab & "Added '" & TR.Count.ToString & "' cells to the row...")
   Table += TR
 Next
-</code></pre>
+```
