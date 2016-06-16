@@ -215,11 +215,13 @@ Public Class HTMLWriter
       str_html.Append("<!DOCTYPE html>" & vbLf & "<html>" & vbLf & "</html>")
     End If
     str_html.Insert(str_html.Length - 7, "<script type='text/javascript'>" & My.Resources.SortTable & vbLf & _
+                    "document.addEventListener('DOMContentLoaded', function(event){" & vbLf & _
                     "var __tables = document.querySelectorAll('table');" & vbLf & _
                     "for (var len = __tables.length, n = 0; n < len; n++){" & vbLf & _
                     "var __tmpSortTable = new SortTableClass.SortTable(__tables[n]);" & vbLf & _
                     "__tmpSortTable.UpdateTableHTML(__tables[n]);" & vbLf & _
-                    "}</script>")
+                    "}" & vbLf & _
+                    "});</script>")
   End Sub
 
   ''' <summary>
@@ -2231,11 +2233,11 @@ Public Class HTMLWriter
     Public Sub SetSpan(Optional ByVal InnerHTML As String = "")
       If Not String.IsNullOrEmpty(InnerHTML) Then _inner = New StringBuilder(MediumStringSize) : _inner.Append(InnerHTML)
       _span = New StringBuilder(MediumStringSize)
-      _span.Append("<div")
+      _span.Append("<span")
       If Not IsNothing(_attr) Then _span.Append(_attr.ToString)
       _span.Append(">" & vbLf)
       _span.AppendLine(_inner.ToString)
-      _span.AppendLine("</div>")
+      _span.AppendLine("</span>")
     End Sub
     Public Sub AppendSpan(ByVal ExtraHTML As String)
       If IsNothing(_inner) Then _inner = New StringBuilder(MediumStringSize)
