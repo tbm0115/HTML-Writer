@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Irongate Machine, Inc.")> 
 <Assembly: AssemblyProduct("HTML")> 
-<Assembly: AssemblyCopyright("Copyright © Windows User 2014")> 
+<Assembly: AssemblyCopyright("Copyright © Irongate Machine 2016")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("4.2.0.10")> 
-<Assembly: AssemblyFileVersion("4.2.0.10")> 
+<Assembly: AssemblyVersion("4.2.0.23")> 
+<Assembly: AssemblyFileVersion("4.2.0.23")> 
